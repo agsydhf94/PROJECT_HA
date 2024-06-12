@@ -143,22 +143,32 @@ namespace HA
 
 
             // 무장 상태일 때만 총이 보임
-            scifiRifle.SetActive(isArmed);
+            // scifiRifle.SetActive(isArmed);
 
             // 무장 상태 진입 후, Draw Rifle 애니메이션이 끝나면 Grip Ready 리깅 개시
-            rigbuilder.enabled = animator.GetBool("Ready_Rifle");
+            /*rigbuilder.enabled = animator.GetBool("Ready_Rifle");
+             */ 
 
-            // 사격 상태일 때만 에임 관련 리깅이 작동함
+            /* 사격 상태일 때만 에임 관련 리깅이 작동함
             int rifle_fire = animator.GetInteger("Rifle_Fire");
             rigbuilder.layers[0].active = Convert.ToBoolean(rifle_fire);
             rigbuilder.layers[1].active = Convert.ToBoolean(rifle_fire);
+            */
 
-
-            // 쏜 지 조금 지나도록 안 쏘면 다시 총을 내려놓는다
-            if (Input.GetKeyDown(KeyCode.U))
+            // 무장, 비무장상태 전환
+            if (Input.GetKeyDown(KeyCode.U) && !isArmed)
             {
                 isArmed = true;
+                animator.SetBool("isArmed", true);
             }
+            else if(Input.GetKeyDown(KeyCode.U) && isArmed)
+            {
+                isArmed = false;
+                animator.SetBool("isArmed", false);
+            }
+
+            
+
 
             if(isArmed)
             {
@@ -175,6 +185,7 @@ namespace HA
                     transform.forward = cameraForward;
 
                 }
+                // 쏜 지 조금 지나도록 안 쏘면 다시 총을 내려놓는다
                 else
                 {
                     rifleHoldingTimer -= Time.deltaTime;
