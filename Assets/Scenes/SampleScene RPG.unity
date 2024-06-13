@@ -499,6 +499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Katana
       objectReference: {fileID: 0}
+    - target: {fileID: 8544741719374664014, guid: 05e9ae39d5dc02b49a73523277ad8080, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1086,9 +1090,9 @@ MonoBehaviour:
   defaultFOV: 0
   aimFOV: 0
   rotationSmoothTime: 0.12
-  moveSpeed: 3
-  sprintSpeed: 5
-  speedChangeRate: 10
+  moveSpeed: 10
+  sprintSpeed: 15
+  speedChangeRate: 70
   dashSpeedDeltaMultiplier: 2
   isArmed: 0
   weaponHolder: {fileID: 1340600626}

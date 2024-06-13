@@ -66,8 +66,12 @@ namespace HA
         public GameObject weaponHolder;
         private Weapon currentWeapon;
         public GameObject katana;
-        
 
+        private int attackComboCount = 0;
+        public int AttackComboCount
+        {
+            set => attackComboCount = value;
+        }
 
 
         private bool isEnablemovement = true;
@@ -140,7 +144,20 @@ namespace HA
                 animator.SetFloat("DashSpeedMultiplier", 1f);
             }
 
-
+            // 콤보 액션
+            if(Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                if(attackComboCount == 0)
+                {
+                    animator.SetTrigger("Trigger_Attack");
+                    attackComboCount++;
+                }
+                else
+                {
+                    attackComboCount++;
+                    animator.SetInteger("ComboCount", attackComboCount);
+                }
+            }
 
             // 무장 상태일 때만 총이 보임
             // scifiRifle.SetActive(isArmed);
