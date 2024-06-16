@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class CharacterCustomization : MonoBehaviour
 {
     public GameObject playerCharacterAsuna;
-    public Material[] hairColor;
-    public GameObject hair;
 
     // 어깨 패드
     public GameObject armor_ShoulderLeft;
@@ -46,48 +44,28 @@ public class CharacterCustomization : MonoBehaviour
         }
         if(Input.GetKeyUp(KeyCode.L))
         {
-            Debug.Log(PlayerPrefs.GetString("NAME"));
+            // Debug.Log(PlayerPrefs.GetString("NAME"));
         }
     }
 
+    // id.name = 토글의 하이어라키 상에 있는 이름
     public void SetShoulderPad(Toggle id)
     {
         switch(id.name)
         {
-            case "SPad-01":
+            case "Toggle_Shoulder Armor":
                 this.armor_ShoulderLeft.SetActive(id.isOn);
-                this.armor_UpperArmLeft.SetActive(false);
-                this.armor_EllbowLeft.SetActive(false);
-                this.armor_ShoulderRight.SetActive(id.isOn);
-                this.armor_UpperArmRight.SetActive(false);
-                this.armor_EllbowRight.SetActive(false);
-                PlayerPrefs.SetInt("SP-01", 1);
-                PlayerPrefs.SetInt("SP-02", 0);
-                PlayerPrefs.SetInt("SP-03", 0);
+                this.armor_ShoulderRight.SetActive(id.isOn);                
                 break;
 
-            case "SPad-02":
-                this.armor_ShoulderLeft.SetActive(false);
+            case "Toggle_UpperArm Armor":
                 this.armor_UpperArmLeft.SetActive(id.isOn);
-                this.armor_EllbowLeft.SetActive(false);
-                this.armor_ShoulderRight.SetActive(false);
                 this.armor_UpperArmRight.SetActive(id.isOn);
-                this.armor_EllbowRight.SetActive(false);
-                PlayerPrefs.SetInt("SP-01", 0);
-                PlayerPrefs.SetInt("SP-02", 1);
-                PlayerPrefs.SetInt("SP-03", 0);
                 break;
 
-            case "SPad-03":
-                this.armor_ShoulderLeft.SetActive(false);
-                this.armor_UpperArmLeft.SetActive(false);
+            case "Toggle_Elbow Armor":
                 this.armor_EllbowLeft.SetActive(id.isOn);
-                this.armor_ShoulderRight.SetActive(false);
-                this.armor_UpperArmRight.SetActive(false);
-                this.armor_EllbowRight.SetActive(id.isOn);
-                PlayerPrefs.SetInt("SP-01", 0);
-                PlayerPrefs.SetInt("SP-02", 0);
-                PlayerPrefs.SetInt("SP-03", 1);
+                this.armor_EllbowRight.SetActive(id.isOn);               
                 break;
 
         }
@@ -97,7 +75,7 @@ public class CharacterCustomization : MonoBehaviour
     {
         switch(id.name)
         {
-            case "Kpad-01":
+            case "Toggle_Knee Armor":
                 {
                     this.armor_KneeLeft.SetActive(id.isOn);
                     this.armor_KneeRight.SetActive(id.isOn);
@@ -110,7 +88,7 @@ public class CharacterCustomization : MonoBehaviour
     {
         switch(id.name)
         {
-            case "sciFiRifle":
+            case "Toggle_SciFiRifle":
                 {
                     this.scifiRifle.SetActive(id.isOn);
                 }
@@ -122,7 +100,7 @@ public class CharacterCustomization : MonoBehaviour
     {
         switch(id.name)
         {
-            case "sciFiHandGun":
+            case "Toggle_Handgun":
                 {
                     this.handGun.SetActive(id.isOn);
                 }
@@ -130,9 +108,6 @@ public class CharacterCustomization : MonoBehaviour
         }
     }
 
-    public void SetHairColor(Slider id)
-    {
-        this.hair.GetComponent<Renderer>().material = this.hairColor[System.Convert.ToInt32(id.value)];
-    }
+    
 }
 

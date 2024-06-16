@@ -621,7 +621,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1344577015}
+        m_TargetAssemblyTypeName: CharacterCustomization, Assembly-CSharp
+        m_MethodName: SetShoulderPad
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 98726451}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &102788538
 GameObject:
@@ -699,6 +711,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102788538}
   m_CullTransparentMesh: 1
+--- !u!1 &167564462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5331100293486279740, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+  m_PrefabInstance: {fileID: 1790599833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &180524347
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,6 +969,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &213405947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5331100294192316758, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+  m_PrefabInstance: {fileID: 1790599833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &238794746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,6 +1604,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &458867019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 448312434541925913, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+  m_PrefabInstance: {fileID: 1790599833}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &510589709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6382637633255995756, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+  m_PrefabInstance: {fileID: 1790599833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &539487940
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,7 +2200,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1344577015}
+        m_TargetAssemblyTypeName: CharacterCustomization, Assembly-CSharp
+        m_MethodName: SetRifle
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 620541784}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &626647250
 GameObject:
@@ -2874,6 +2918,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773378240}
   m_CullTransparentMesh: 1
+--- !u!1 &781497234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5331100293170500077, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+  m_PrefabInstance: {fileID: 1790599833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &799554199
 GameObject:
   m_ObjectHideFlags: 0
@@ -2979,6 +3028,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799554199}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &815002567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8104772918800157241, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+  m_PrefabInstance: {fileID: 1790599833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &828158477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3054,6 +3108,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828158477}
   m_CullTransparentMesh: 1
+--- !u!1 &837966997 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5331100293680387065, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+  m_PrefabInstance: {fileID: 1790599833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &907283974
 GameObject:
   m_ObjectHideFlags: 0
@@ -3500,6 +3559,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &969912283 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8904481353477386477, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+  m_PrefabInstance: {fileID: 1790599833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1008936721
 GameObject:
   m_ObjectHideFlags: 0
@@ -4139,6 +4203,7 @@ GameObject:
   - component: {fileID: 1344577012}
   - component: {fileID: 1344577013}
   - component: {fileID: 1344577014}
+  - component: {fileID: 1344577015}
   m_Layer: 0
   m_Name: HA.Character.Player
   m_TagString: Untagged
@@ -4219,6 +4284,30 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.96, z: 0}
+--- !u!114 &1344577015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344577011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36368c4724d080540ac251b8888a2bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCharacterAsuna: {fileID: 969912283}
+  armor_ShoulderLeft: {fileID: 1860333573}
+  armor_UpperArmLeft: {fileID: 781497234}
+  armor_EllbowLeft: {fileID: 815002567}
+  armor_ShoulderRight: {fileID: 2051057451}
+  armor_UpperArmRight: {fileID: 837966997}
+  armor_EllbowRight: {fileID: 1404961249}
+  handGun: {fileID: 458867019}
+  scifiRifle: {fileID: 510589709}
+  armor_KneeLeft: {fileID: 213405947}
+  armor_KneeRight: {fileID: 167564462}
+  rotateCharacter: 0
 --- !u!1 &1400369895
 GameObject:
   m_ObjectHideFlags: 0
@@ -4298,6 +4387,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400369895}
   m_CullTransparentMesh: 1
+--- !u!1 &1404961249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1229570400420811494, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+  m_PrefabInstance: {fileID: 1790599833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1406662823
 GameObject:
   m_ObjectHideFlags: 0
@@ -4418,7 +4512,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1344577015}
+        m_TargetAssemblyTypeName: CharacterCustomization, Assembly-CSharp
+        m_MethodName: SetHandGun
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1415500830}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1460143516
 GameObject:
@@ -4535,7 +4641,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1344577015}
+        m_TargetAssemblyTypeName: CharacterCustomization, Assembly-CSharp
+        m_MethodName: SetShoulderPad
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1486785133}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1489045161
 GameObject:
@@ -4589,6 +4707,7 @@ GameObject:
   - component: {fileID: 1489801114}
   - component: {fileID: 1489801113}
   - component: {fileID: 1489801117}
+  - component: {fileID: 1489801118}
   m_Layer: 5
   m_Name: Character Customization UI
   m_TagString: Untagged
@@ -4699,6 +4818,30 @@ MonoBehaviour:
   body_R: {fileID: 965218338}
   body_G: {fileID: 594390945}
   body_B: {fileID: 262707708}
+--- !u!114 &1489801118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489801112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36368c4724d080540ac251b8888a2bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCharacterAsuna: {fileID: 1344577011}
+  armor_ShoulderLeft: {fileID: 17999535964932659, guid: f88c60fb8ebc9c04b8357521b130d5d7, type: 3}
+  armor_UpperArmLeft: {fileID: 1623298804885943289, guid: 9aed30026abb08544a0e1604a7f03803, type: 3}
+  armor_EllbowLeft: {fileID: 3837989021477247936, guid: 5da11bb2842f9c84ab551faaf185231d, type: 3}
+  armor_ShoulderRight: {fileID: 962567021659489341, guid: a64a85a05149d3e4c9c214650f6a5cc9, type: 3}
+  armor_UpperArmRight: {fileID: 6052572236881072807, guid: 5b93462a1975e2946aaa65e49ad6c017, type: 3}
+  armor_EllbowRight: {fileID: 6064934084880501786, guid: 1516e66c6a684c243bd67c6745447650, type: 3}
+  handGun: {fileID: 458867019}
+  scifiRifle: {fileID: 510589709}
+  armor_KneeLeft: {fileID: 8882514820983233506, guid: 501abf5dc02109d4ea075c4fce5b41d0, type: 3}
+  armor_KneeRight: {fileID: 6064934084880501786, guid: 1516e66c6a684c243bd67c6745447650, type: 3}
+  rotateCharacter: 0
 --- !u!1 &1495988790
 GameObject:
   m_ObjectHideFlags: 0
@@ -5003,7 +5146,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1344577015}
+        m_TargetAssemblyTypeName: CharacterCustomization, Assembly-CSharp
+        m_MethodName: SetKneePad
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1648423936}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1650780918
 GameObject:
@@ -5760,6 +5915,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795933299}
   m_CullTransparentMesh: 1
+--- !u!1 &1860333573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5331100292640251975, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+  m_PrefabInstance: {fileID: 1790599833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1883682902
 GameObject:
   m_ObjectHideFlags: 0
@@ -6144,7 +6304,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1344577015}
+        m_TargetAssemblyTypeName: CharacterCustomization, Assembly-CSharp
+        m_MethodName: SetShoulderPad
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1960938797}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1989739081
 GameObject:
@@ -6379,6 +6551,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035272964}
   m_CullTransparentMesh: 1
+--- !u!1 &2051057451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5331100292989087896, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+  m_PrefabInstance: {fileID: 1790599833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2069147003
 GameObject:
   m_ObjectHideFlags: 0
