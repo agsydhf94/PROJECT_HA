@@ -33,7 +33,8 @@ namespace HA
         public float aimFOV;
 
 
-
+        [Header("Interaction UI")]
+        public InteractionSensor interactionSensor;
 
 
 
@@ -90,8 +91,30 @@ namespace HA
             currentWeapon = weaponGameObject.GetComponent<Weapon>();
 
             katana = GameObject.Find("Katana");
-            
+
+            // 추가 6/17
+            interactionSensor = GameObject.Find("Interaction Sensor").GetComponent<InteractionSensor>();
+
         }
+
+        // 추가 6/17
+        private void OnEnable()
+        {
+            interactionSensor.OnDetected += OnDetectedInteraction;
+            interactionSensor.OnLost += OnLostInteraction;
+        }
+
+        private void OnLostInteraction(IInteractable interactable)
+        {
+            InteractionUI.Instance.RemoveInteractionData(interactable);
+        }
+
+        private void OnDetectedInteraction(IInteractable interactable)
+        {
+            InteractionUI.Instance.AddInteractionData(interactable);
+        }
+
+        // 추가 6/17
 
         private void Start()
         {
@@ -102,6 +125,23 @@ namespace HA
         private void Update()
         {
             Move();
+
+            // 6/17 추가 Interaction UI 버튼
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                InteractionUI.Instance.DoInteract();
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                InteractionUI.Instance.SelectNext();
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                InteractionUI.Instance.SelectPrev();
+            }
+            // 6/17 추가
 
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");

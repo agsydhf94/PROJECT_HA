@@ -32,11 +32,10 @@ namespace HA
         public float defaultFOV;
         public float aimFOV;
 
+        
 
 
-        
-        
-        
+
         private Camera mainCamera;
         private CharacterController controller;
         private Animator animator;
@@ -86,8 +85,13 @@ namespace HA
             currentWeapon = weaponGameObject.GetComponent<Weapon>();
 
             scifiRifle = GameObject.Find("ScifiRifleWLT78Receiver");
-            rigbuilder = GetComponentInChildren<RigBuilder>();            
+            rigbuilder = GetComponentInChildren<RigBuilder>();
+
+            
         }
+
+
+        
 
         private void Start()
         {
@@ -98,6 +102,8 @@ namespace HA
         private void Update()
         {
             Move();
+
+            
 
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -216,6 +222,7 @@ namespace HA
                 CameraSystem.Instance.TargetFOV = defaultFOV;
             }
 
+            
 
 
 
