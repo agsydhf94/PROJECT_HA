@@ -7,10 +7,11 @@ namespace HA
 {
     public class InteractionSensor : MonoBehaviour
     {
+        
+        public List<IInteractable> interactables = new List<IInteractable>();
         public bool HasInteractable => interactables.Count > 0;
 
-        public List<IInteractable> interactables = new List<IInteractable>();
-
+        // 유니티에서 제공하는 Action 델리게이트
         public System.Action<IInteractable> OnDetected;
         public System.Action<IInteractable> OnLost;
 

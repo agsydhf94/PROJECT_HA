@@ -7,9 +7,9 @@ public class ColorModifier : MonoBehaviour
 {
     [Header("Hair Color")]
     public SkinnedMeshRenderer hair;
-    public Slider red;
-    public Slider green;
-    public Slider blue;
+    public Slider hair_R;
+    public Slider hair_G;
+    public Slider hair_B;
 
     [Header("Body Color")]
     public SkinnedMeshRenderer body;
@@ -20,9 +20,9 @@ public class ColorModifier : MonoBehaviour
     public void HairColorEdit()
     {
         Color color = hair.material.color;
-        color.r = red.value;
-        color.g = green.value;
-        color.b = blue.value;
+        color.r = hair_R.value;
+        color.g = hair_G.value;
+        color.b = hair_B.value;
         hair.material.color = color;
         hair.material.SetColor("_EmissionColor", color);
     }
