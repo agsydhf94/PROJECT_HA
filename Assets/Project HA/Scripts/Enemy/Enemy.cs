@@ -20,13 +20,10 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             isDead = true;
             gameObject.SetActive(!isDead);
-
         }
     }
 
-    
-
-    
+       
     public void Damage()
     {
         if(!isDead)

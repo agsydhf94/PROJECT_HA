@@ -23,6 +23,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
         string physicMaterialName = collision.collider.material.name;
         string[] splitNames = physicMaterialName.Split(" ");
         string originalName = splitNames[0];
@@ -42,10 +43,9 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
 
 
-        
-
     }
 
+    // 플레이어가 뚫을 수 있고 파괴가능한 오브젝트 데미지
     private void OnTriggerEnter(Collider other)
     {
         IDamagable damagable = other.GetComponent<IDamagable>();

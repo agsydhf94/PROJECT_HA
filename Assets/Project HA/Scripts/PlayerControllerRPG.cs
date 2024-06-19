@@ -129,6 +129,11 @@ namespace HA
             // 6/17 추가 Interaction UI 버튼
             if (Input.GetKeyDown(KeyCode.F))
             {
+                // 만약에 현재 UI에서 선택한 상호작용 콘텐츠가 ItemBox라면 => Player Character 의 줍기 모션을 트리거한다.
+                // var contents = InteractionUI.Instance.GetInteractionContents();
+                // if(contents == ItemBox)
+                //   Player Character 의 줍기 모션을 트리거.
+
                 InteractionUI.Instance.DoInteract();
             }
 
