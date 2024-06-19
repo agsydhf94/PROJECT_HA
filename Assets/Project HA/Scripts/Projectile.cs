@@ -1,3 +1,4 @@
+using HA;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,6 +41,18 @@ public class Projectile : MonoBehaviour
 
         Destroy(gameObject);
 
+
+        
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        IDamagable damagable = other.GetComponent<IDamagable>();
+        if (damagable != null)
+        {
+            damagable.Damage();
+        }
     }
 
 
