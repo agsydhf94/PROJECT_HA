@@ -9,6 +9,7 @@ namespace HA
         public string Key => throw new System.NotImplementedException();
         public string Message => throw new System.NotImplementedException();
 
+
         public void Interact()
         {
             // To do : 아이템 박스를 없애고, 아이템을 플레이어의 인벤토리에 넣어준다.
