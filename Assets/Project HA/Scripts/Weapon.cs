@@ -18,7 +18,9 @@ namespace HA
 
         public GameObject bulletPrefab;
         public GameObject muzzlePrefab;
+        public GameObject bulletCartridgePrefab;
         public Transform firePosition;
+        public Transform bulletCartRidgePosition;
         public Animator animator;
         
 
@@ -56,6 +58,13 @@ namespace HA
                 var cameraTransform = Camera.main.transform;
                 newBullet.transform.SetPositionAndRotation(cameraTransform.position, cameraTransform.rotation);
                 newBullet.gameObject.SetActive(true);
+
+                // ÅºÇÇ »ý¼º
+
+                var newbulletCartridge = Instantiate(bulletCartridgePrefab);
+                newbulletCartridge.transform.SetPositionAndRotation(bulletCartRidgePosition.position, bulletCartRidgePosition.rotation);
+                newbulletCartridge.GetComponent<Rigidbody>().AddForce(Vector3.left);
+
             }
         }
     }
