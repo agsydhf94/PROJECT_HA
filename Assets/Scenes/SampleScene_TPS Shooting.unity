@@ -2318,7 +2318,7 @@ MonoBehaviour:
   rotationSmoothTime: 0.12
   moveSpeed: 3
   sprintSpeed: 5
-  speedChangeRate: 50
+  speedChangeRate: 300
   dashSpeedDeltaMultiplier: 2
   isArmed: 0
   weaponHolder: {fileID: 534010607}
@@ -3310,8 +3310,19 @@ MonoBehaviour:
   firePosition: {fileID: 1112421802}
   bulletCartRidgePosition: {fileID: 1819489700}
   animator: {fileID: 0}
-  fireRate: 0.1
+  gunName: SciFi Rifle
   range: 100
+  fireRate: 0.1
+  accuracy: 0
+  reloadTime: 0
+  damagePoint: 30
+  reloadBulletCount: 0
+  currentBulletCount: 0
+  maxBulletCount: 0
+  carryBulletCount: 0
+  retroActionForce: 0
+  retroActionFineSightForce: 0
+  fire_Sound: {fileID: 0}
 --- !u!1 &1819489699
 GameObject:
   m_ObjectHideFlags: 0

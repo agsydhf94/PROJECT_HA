@@ -22,11 +22,31 @@ namespace HA
         public Transform firePosition;
         public Transform bulletCartRidgePosition;
         public Animator animator;
-        
 
-
-        public float fireRate = 0.1f;
+        public string gunName;
         public float range = 100f;
+        public float fireRate = 0.1f;
+        public float accuracy;
+        public float reloadTime;
+
+        public int damagePoint;
+
+        [Header("Magazine Status")]
+        public int reloadBulletCount; // 탄창 용량
+        public int currentBulletCount; // 현재 탄창에 몇 발 남아있는지
+        public int maxBulletCount; // 인벤토리에 저장 가능한 최대 탄환수
+        public int carryBulletCount; // 현재 소유중인 탄환 개수
+
+        public float retroActionForce; // 총기 반동세기
+        public float retroActionFineSightForce; // 정조준 시 반동세기
+
+        public AudioClip fire_Sound;
+
+
+
+
+
+
 
         private float lastShootTime = 0f;
 
@@ -35,10 +55,6 @@ namespace HA
             animator = GameObject.Find("HA.Character.Player").GetComponent<Animator>();            
         }
 
-        private void Update()
-        {
-            
-        }
 
         public void Shoot()
         {

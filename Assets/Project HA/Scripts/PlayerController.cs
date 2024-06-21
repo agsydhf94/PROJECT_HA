@@ -143,6 +143,8 @@ namespace HA
             float vertical = Input.GetAxis("Vertical");
             move = new Vector2(horizontal, vertical);
 
+            animator.SetBool("IsMoving", move.magnitude != 0);
+
             /*if(interactionSensor.HasInteractable)
             {
                 move = Vector2.zero;
