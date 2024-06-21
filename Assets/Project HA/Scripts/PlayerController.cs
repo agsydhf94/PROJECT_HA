@@ -32,7 +32,8 @@ namespace HA
         public float defaultFOV;
         public float aimFOV;
 
-        
+        [Header("Interaction UI")]
+        public InteractionSensor interactionSensor;
 
 
 
@@ -87,11 +88,25 @@ namespace HA
             scifiRifle = GameObject.Find("ScifiRifleWLT78Receiver");
             rigbuilder = GetComponentInChildren<RigBuilder>();
 
-            
+            interactionSensor = GameObject.Find("Interaction Sensor").GetComponent<InteractionSensor>();
         }
 
+        private void OnEnable()
+        {
+            interactionSensor.OnDetected += OnDetectedInteraction;
+            interactionSensor.OnLost += OnLostInteraction;
+        }
 
-        
+        private void OnLostInteraction(IInteractable interactable)
+        {
+            InteractionUI.Instance.RemoveInteractionData(interactable);
+        }
+
+        private void OnDetectedInteraction(IInteractable interactable)
+        {
+            InteractionUI.Instance.AddInteractionData(interactable);
+        }
+
 
         private void Start()
         {
@@ -103,7 +118,26 @@ namespace HA
         {
             Move();
 
-            
+            // 상호작용 키
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                // 만약에 현재 UI에서 선택한 상호작용 콘텐츠가 ItemBox라면 => Player Character 의 줍기 모션을 트리거한다.
+                // var contents = InteractionUI.Instance.GetInteractionContents();
+                // if(contents == ItemBox)
+                //   Player Character 의 줍기 모션을 트리거.
+
+                InteractionUI.Instance.DoInteract();
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                InteractionUI.Instance.SelectNext();
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                InteractionUI.Instance.SelectPrev();
+            }
 
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
