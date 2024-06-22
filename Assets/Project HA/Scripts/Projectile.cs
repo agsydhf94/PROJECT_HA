@@ -3,57 +3,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+namespace HA
 {
-    public float speed = 30f;
-    public float lifeTime = 10;
 
-    public GameObject metalImpactPrefab;
-    public GameObject woodImpactPrefab;
-
-    private void Start()
+    public class Projectile : MonoBehaviour
     {
-        Destroy(gameObject, lifeTime);
-    }
+        public float speed = 30f;
+        public float lifeTime = 10;
 
-    private void Update()
-    {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-    }
+        public GameObject metalImpactPrefab;
+        public GameObject woodImpactPrefab;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-
-        string physicMaterialName = collision.collider.material.name;
-        string[] splitNames = physicMaterialName.Split(" ");
-        string originalName = splitNames[0];
-
-        if (originalName.Equals("PhysicMaterial_Metal"))
+        private void Start()
         {
-            var newImpact = Instantiate(metalImpactPrefab);
-            newImpact.transform.SetPositionAndRotation(collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+            Destroy(gameObject, lifeTime);
         }
 
-        if (originalName.Equals("PhysicMaterial_Wood"))
+        private void Update()
         {
-            var newImpact = Instantiate(woodImpactPrefab);
-            newImpact.transform.SetPositionAndRotation(collision.contacts[0].point, Quaternion.Euler(-collision.contacts[0].normal));
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
 
-        Destroy(gameObject);
+        private void OnCollisionEnter(Collision collision)
+        {
+
+            string physicMaterialName = collision.collider.material.name;
+            string[] splitNames = physicMaterialName.Split(" ");
+            string originalName = splitNames[0];
+
+            if (originalName.Equals("PhysicMaterial_Metal"))
+            {
+                var newImpact = Instantiate(metalImpactPrefab);
+                newImpact.transform.SetPositionAndRotation(collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+            }
+
+            if (originalName.Equals("PhysicMaterial_Wood"))
+            {
+                var newImpact = Instantiate(woodImpactPrefab);
+                newImpact.transform.SetPositionAndRotation(collision.contacts[0].point, Quaternion.Euler(-collision.contacts[0].normal));
+            }
+
+            Destroy(gameObject);
+
+
+        }
+
+        // 플레이어가 뚫을 수 있고 파괴가능한 오브젝트 데미지
+        private void OnTriggerEnter(Collider other)
+        {
+            IDamagable damagable = other.GetComponent<IDamagable>();
+            if (damagable != null)
+            {
+                damagable.Damage();
+            }
+        }
 
 
     }
-
-    // 플레이어가 뚫을 수 있고 파괴가능한 오브젝트 데미지
-    private void OnTriggerEnter(Collider other)
-    {
-        IDamagable damagable = other.GetComponent<IDamagable>();
-        if (damagable != null)
-        {
-            damagable.Damage();
-        }
-    }
-
-
 }

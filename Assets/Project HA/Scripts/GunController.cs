@@ -11,9 +11,13 @@ namespace HA
 
         private AudioSource audioSource;
 
+        private void Awake()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
 
 
-        private void PlaySE(AudioClip _clip)
+        public void PlaySE(AudioClip _clip)
         {
             audioSource.clip = _clip;
             audioSource.Play();

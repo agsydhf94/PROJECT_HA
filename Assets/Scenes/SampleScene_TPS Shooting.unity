@@ -1016,7 +1016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2080d24ddb13947b381949344cb5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGun: {fileID: 0}
+  currentGun: {fileID: 1807470878}
 --- !u!1 &563104504
 GameObject:
   m_ObjectHideFlags: 0
@@ -3434,7 +3434,7 @@ MonoBehaviour:
   carryBulletCount: 0
   retroActionForce: 0
   retroActionFineSightForce: 0
-  fire_Sound: {fileID: 0}
+  fire_Sound: {fileID: 8300000, guid: aae6983dd44853f4fbe612fe579ede6f, type: 3}
 --- !u!1 &1819489699
 GameObject:
   m_ObjectHideFlags: 0

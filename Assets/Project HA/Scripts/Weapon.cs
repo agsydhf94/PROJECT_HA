@@ -64,7 +64,7 @@ namespace HA
             {
                 // Ω¥∆√ ∞°¥…
                 lastShootTime = Time.time;
-                
+                gunController.PlaySE(fire_Sound);
 
                 // Muzzle ¿Ã∆Â∆Æ ∏∏µÈ±‚
                 var newMuzzle = Instantiate(muzzlePrefab);
