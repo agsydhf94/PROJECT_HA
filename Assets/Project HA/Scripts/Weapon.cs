@@ -22,6 +22,7 @@ namespace HA
         public Transform firePosition;
         public Transform bulletCartRidgePosition;
         public Animator animator;
+        public GunController gunController;
 
         public string gunName;
         public float range = 100f;
@@ -52,7 +53,8 @@ namespace HA
 
         private void Awake()
         {
-            animator = GameObject.Find("HA.Character.Player").GetComponent<Animator>();            
+            animator = GameObject.Find("HA.Character.Player").GetComponent<Animator>();
+            gunController = GameObject.Find("WeaponHolder").GetComponent<GunController>();
         }
 
 
@@ -62,6 +64,7 @@ namespace HA
             {
                 // Ω¥∆√ ∞°¥…
                 lastShootTime = Time.time;
+                
 
                 // Muzzle ¿Ã∆Â∆Æ ∏∏µÈ±‚
                 var newMuzzle = Instantiate(muzzlePrefab);
