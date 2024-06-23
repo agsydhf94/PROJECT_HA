@@ -23,6 +23,10 @@ namespace HA
             audioSource.Play();
         }
 
+        public Weapon GetWeapon()
+        {
+            return currentGun;
+        }
 
     }
 }

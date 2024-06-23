@@ -64,7 +64,7 @@ namespace HA
 
         [Header("Weapon Holder")]
         public GameObject weaponHolder;
-        private Weapon currentWeapon;
+        public Weapon currentWeapon;
         public GameObject scifiRifle;
         public RigBuilder rigbuilder;
 
