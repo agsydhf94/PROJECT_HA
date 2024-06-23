@@ -40,7 +40,11 @@ namespace HA
         private Camera mainCamera;
         private CharacterController controller;
         private Animator animator;
-        private bool isSprint = false;
+        public bool isMove;
+        public bool isSprint = false;
+        public bool isWalk = false;
+        public bool isClosedAim = false;
+        public bool isShooting = false;
         private Vector2 move;
         private float speed;
         private float animationBlend;
@@ -159,6 +163,7 @@ namespace HA
             look = new Vector2(hMouse, vMouse);
 
             isSprint = Input.GetKey(KeyCode.LeftShift);
+            isWalk = move.magnitude != 0 && !isSprint;
             isStrafe = Input.GetKey(KeyCode.Mouse1); // Mouse Right Button
             if (isStrafe)
             {
@@ -174,6 +179,8 @@ namespace HA
             animator.SetFloat("Horizontal", move.x);
             animator.SetFloat("Vertical", move.y);
             animator.SetFloat("Strafe", isStrafe ? 1 : 0);
+
+            
 
             // 왼쪽 시프트키 눌렀을 때, 애니메이션 속도 증가
             // GetKey : 누르는 동안 true
@@ -213,10 +220,10 @@ namespace HA
                 animator.SetBool("isArmed", false);
             }
 
-            
+            isShooting = Input.GetKey(KeyCode.Mouse0) && currentWeapon.currentBulletCount > 0;
 
 
-            if(isArmed)
+            if (isArmed)
             {
                 animator.SetTrigger("Armed_Rifle");
 
@@ -230,8 +237,8 @@ namespace HA
 
 
                 if (Input.GetKey(KeyCode.Mouse0) && !currentWeapon.isReload)
-                {
-                    if(currentWeapon.currentBulletCount > 0 )
+                {   
+                    if (currentWeapon.currentBulletCount > 0 )
                     {
                         animator.SetInteger("Rifle_Fire", 1);
                         currentWeapon?.Shoot(); // 슈팅 로직
@@ -260,18 +267,27 @@ namespace HA
                 }
 
             }
+
+            // Idle 사격 상태에서 원래 자세로 탈출하는 로직
+            // isWalk = isMove || isSprint;
+            // animator.SetBool("RifleFire_Idle_Exit", isMove || rifleHoldingTimer < 0);
+
+            
+
             
 
             // 마우스 우클릭을 하고 있으면 줌인하기
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 // zoom in
+                isClosedAim = true;
                 CameraSystem.Instance.TargetFOV = aimFOV;
             }
 
             if (Input.GetKeyUp(KeyCode.Mouse1))
             {
                 // zoom out
+                isClosedAim = false;
                 CameraSystem.Instance.TargetFOV = defaultFOV;
             }
 

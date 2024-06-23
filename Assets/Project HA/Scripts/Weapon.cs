@@ -23,6 +23,7 @@ namespace HA
         public Transform bulletCartRidgePosition;
         public Animator animator;
         public GunController gunController;
+        public CrossHair crosshair;
 
         public string gunName;
         public float range = 100f;
@@ -56,6 +57,7 @@ namespace HA
         {
             animator = GameObject.Find("FreeTestCharacterAsuna").GetComponent<Animator>();
             gunController = GameObject.Find("WeaponHolder").GetComponent<GunController>();
+            crosshair = FindObjectOfType<CrossHair>();
         }
 
 
@@ -66,6 +68,7 @@ namespace HA
                 // 슈팅 가능
                 lastShootTime = Time.time;
                 gunController.PlaySE(fire_Sound);
+                crosshair.FireAnimation();
                 currentBulletCount--;
 
                 // Muzzle 이펙트 만들기
@@ -99,7 +102,9 @@ namespace HA
                 carryBulletCount += currentBulletCount;
                 currentBulletCount = 0;
 
-                yield return new WaitForSeconds(reloadTime);
+                
+
+                    yield return new WaitForSeconds(reloadTime);
 
                 if(carryBulletCount >= reloadBulletCount) // 한 번 장전 가능한 충분한 탄을 소유하고 있다면
                 {
