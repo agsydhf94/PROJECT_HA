@@ -68,6 +68,8 @@ namespace HA
         public GameObject scifiRifle;
         public RigBuilder rigbuilder;
 
+        
+
 
 
         private bool isEnablemovement = true;
@@ -84,11 +86,13 @@ namespace HA
             mainCamera = Camera.main;
             var weaponGameObject = TransformUtility.FindGameObjectWithTag(weaponHolder, "Weapon");
             currentWeapon = weaponGameObject.GetComponent<Weapon>();
+            
 
             scifiRifle = GameObject.Find("ScifiRifleWLT78Receiver");
             rigbuilder = GetComponentInChildren<RigBuilder>();
 
             interactionSensor = GameObject.Find("Interaction Sensor").GetComponent<InteractionSensor>();
+
         }
 
         private void OnEnable()
@@ -216,11 +220,24 @@ namespace HA
             {
                 animator.SetTrigger("Armed_Rifle");
 
-                if (Input.GetKey(KeyCode.Mouse0))
+                // 재장전 로직
+                if (Input.GetKeyDown(KeyCode.R) && !currentWeapon.isReload &&
+                        currentWeapon.currentBulletCount < currentWeapon.reloadBulletCount)
                 {
-                    animator.SetInteger("Rifle_Fire", 1);
-                    currentWeapon?.Shoot(); // 슈팅 로직
-                    rifleHoldingTimer = 0.5f;
+                    currentWeapon.StartCoroutine(currentWeapon.ReloadCoroutine());
+                }
+
+
+
+                if (Input.GetKey(KeyCode.Mouse0) && !currentWeapon.isReload)
+                {
+                    if(currentWeapon.currentBulletCount > 0 )
+                    {
+                        animator.SetInteger("Rifle_Fire", 1);
+                        currentWeapon?.Shoot(); // 슈팅 로직
+                        rifleHoldingTimer = 0.5f;
+                    }
+                    
 
                     var cameraForward = Camera.main.transform.forward.normalized;
                     cameraForward.y = 0;
@@ -364,6 +381,10 @@ namespace HA
             if (lfAngle > 360f) lfAngle -= 360f;
             return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
+
+
+
+
     }
 }
 

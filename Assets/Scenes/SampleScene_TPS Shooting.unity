@@ -3427,11 +3427,12 @@ MonoBehaviour:
   fireRate: 0.1
   accuracy: 0
   reloadTime: 0
+  isReload: 0
   damagePoint: 30
-  reloadBulletCount: 0
-  currentBulletCount: 0
+  reloadBulletCount: 10
+  currentBulletCount: 10
   maxBulletCount: 0
-  carryBulletCount: 0
+  carryBulletCount: 23
   retroActionForce: 0
   retroActionFineSightForce: 0
   fire_Sound: {fileID: 8300000, guid: aae6983dd44853f4fbe612fe579ede6f, type: 3}
