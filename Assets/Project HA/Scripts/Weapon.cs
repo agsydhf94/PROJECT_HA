@@ -120,5 +120,14 @@ namespace HA
                 isReload = false;
             }
         }
+
+        public void CancelReload()
+        {
+            if(isReload == true)
+            {
+                StopAllCoroutines();
+                isReload = false;
+            }
+        }
     }
 }

@@ -28,6 +28,21 @@ namespace HA
         {
             return currentGun;
         }
+        /*
+        public void GunChange(Weapon nextWeapon)
+        {
+            if(WeaponManager.currentWeaponTransform != null)
+            {
+                WeaponManager.currentWeaponTransform.gameObject.SetActive(false);
+            }
+
+            currentGun = nextWeapon;
+            WeaponManager.currentWeaponTransform = currentGun.GetComponent<Transform>();
+
+            currentGun.transform.localPosition = Vector3.zero;
+            currentGun.gameObject.SetActive(true);
+        }
+        */
 
     }
 }

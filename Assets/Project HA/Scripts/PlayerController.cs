@@ -94,8 +94,10 @@ namespace HA
             animator = GetComponentInChildren<Animator>();
             controller = GetComponent<CharacterController>();
             mainCamera = Camera.main;
+            
             var weaponGameObject = TransformUtility.FindGameObjectWithTag(weaponHolder, "Weapon");
-            currentWeapon = weaponGameObject.GetComponent<Weapon>();
+            currentWeapon = weaponGameObject.gameObject.GetComponent<Weapon>();
+
             
 
             scifiRifle = GameObject.Find("ScifiRifleWLT78Receiver");

@@ -9,7 +9,7 @@ public class WeaponManager : MonoBehaviour
 {
     // 무기 중복 교체 방지
     public static bool isChangeWeapon; // static 이므로 공동자산 클래스 변수 = 정적 변수
-    public static Transform currentWeapon;
+    public static Transform currentWeaponTransform; // 기존 무기 껐다 키는 역할 -> 무기 종류가 많아서 공통으로 가지는 Transform으로 함
     public static Animator currentWeaponAnimator;
     private string currentWeaponType;
 
@@ -21,6 +21,8 @@ public class WeaponManager : MonoBehaviour
     private Dictionary<string, Weapon> weaponDictionary = new Dictionary<string, Weapon>();
 
     private GunController gunController;
+    public GameObject weaponHolder;
+    public Weapon currentWeapon;
 
     void Awake()
     {
@@ -28,7 +30,10 @@ public class WeaponManager : MonoBehaviour
         {
             weaponDictionary.Add(guns[i].name, guns[i]);
         }
-      
+
+        var weaponGameObject = TransformUtility.FindGameObjectWithTag(weaponHolder, "Weapon");
+        currentWeapon = weaponGameObject.GetComponent<Weapon>();
+
     }
 
     private void Update()
@@ -38,6 +43,7 @@ public class WeaponManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Alpha1))
             {
                 // to do : 무기 교체 - 라이플
+                // StartCoroutine(ChangeWeaponCoroutine("Rifle"));
             }
             else if(Input.GetKeyDown(KeyCode.Alpha2))
             {
@@ -53,6 +59,12 @@ public class WeaponManager : MonoBehaviour
         yield return new WaitForSeconds(changeWeaponDelayTime);
 
         CancelPreWeaponAction();
+        // WeaponChange(_type, _name);
+
+        yield return new WaitForSeconds(changeWeaponEndDelayTime);
+
+        currentWeaponType = _type;
+        isChangeWeapon = false;
     }
 
     private void CancelPreWeaponAction()
@@ -60,9 +72,21 @@ public class WeaponManager : MonoBehaviour
         switch(currentWeaponType)
         {
             case "Rifle":
+                currentWeapon.CancelReload();
                 break;
             case "Handgun":
                 break;
         }
     }
+    /*
+    private void WeaponChange(string type, string name)
+    {
+        switch(type)
+        {
+            case "Rifle":
+                gunController.GunChange(weaponDictionary[name]);
+                break;
+        }
+    }
+    */
 }
