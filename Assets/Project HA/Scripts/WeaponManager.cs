@@ -30,4 +30,37 @@ public class WeaponManager : MonoBehaviour
         }
       
     }
+
+    private void Update()
+    {
+        if(!isChangeWeapon)
+        {
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                // to do : 무기 교체 - 라이플
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                // to do : 무기 교체 - 권총
+            }
+        }
+    }
+
+    public IEnumerator ChangeWeaponCoroutine(string _type, string _name)
+    {
+        isChangeWeapon = true;
+        
+        yield return new WaitForSeconds(changeWeaponDelayTime);
+
+        CancelPreWeaponAction();
+    }
+
+    private void CancelPreWeaponAction()
+    {
+        switch(currentWeaponType)
+        {
+            case "Gun":
+                break;
+        }
+    }
 }
