@@ -88,7 +88,7 @@ namespace HA
         private void Awake()
         {
             animationEventListener = GetComponentInChildren<AnimationEventListener>();
-            animationEventListener.OnTakeAnimationEvent += OnReceiveAnimationEvent;
+            animationEventListener.OnTakeAnimationEvent += RifleDrawTiming;
             animationEventListener.OnTakeAnimationEvent += RifleHolsterTiming;
 
             animator = GetComponentInChildren<Animator>();
@@ -113,7 +113,7 @@ namespace HA
             }
         }
 
-        private void OnReceiveAnimationEvent(string eventName)
+        private void RifleDrawTiming(string eventName)
         {
             if (eventName.Equals("Equip_Rifle"))
             {
