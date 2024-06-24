@@ -89,6 +89,7 @@ namespace HA
         {
             animationEventListener = GetComponentInChildren<AnimationEventListener>();
             animationEventListener.OnTakeAnimationEvent += OnReceiveAnimationEvent;
+            animationEventListener.OnTakeAnimationEvent += RifleHolsterTiming;
 
             animator = GetComponentInChildren<Animator>();
             controller = GetComponent<CharacterController>();
@@ -102,6 +103,14 @@ namespace HA
 
             interactionSensor = GameObject.Find("Interaction Sensor").GetComponent<InteractionSensor>();
 
+        }
+
+        private void RifleHolsterTiming(string name)
+        {
+            if(name.Equals("Holster_Rifle"))
+            {
+                currentWeapon.gameObject.SetActive(false);
+            }
         }
 
         private void OnReceiveAnimationEvent(string eventName)
@@ -235,7 +244,7 @@ namespace HA
                 isArmed = false;
                 animator.SetBool("isArmed", false);
                 //bool isEquipped = animator.GetBool("Rifle_Active");
-                currentWeapon.gameObject.SetActive(false);
+                //currentWeapon.gameObject.SetActive(false);
             }
 
             isShooting = Input.GetKey(KeyCode.Mouse0) && currentWeapon.currentBulletCount > 0;
