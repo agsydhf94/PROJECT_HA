@@ -9,16 +9,19 @@ public class AnimationRigController : StateMachineBehaviour
 {
     public GameObject Rifle;
     public PlayerController playerController;
+    public Animator animator;
 
     private void Awake()
     {
-        Rifle = GameObject.Find("ScifiRifleWLT78Receiver");
+        // Rifle = GameObject.Find("ScifiRifleWLT78Receiver");
         playerController = GameObject.Find("HA.Character.Player").GetComponent<PlayerController>();
+        animator = GameObject.Find("FreeTestCharacterAsuna").GetComponent<Animator>();
     }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Rifle?.SetActive(true);
+        // Rifle?.SetActive(true);
+        animator.SetBool("Rifle_Active", true);
         playerController.IsEnableMovemnt = false;
     }
 

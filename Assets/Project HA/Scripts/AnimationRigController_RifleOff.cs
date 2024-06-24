@@ -8,14 +8,17 @@ using UnityEngine.Animations.Rigging;
 public class AnimationRigController_RifleOff : StateMachineBehaviour
 {
     public GameObject Rifle;
+    public Animator animator;
 
     private void Awake()
     {
-        Rifle = GameObject.Find("ScifiRifleWLT78Receiver");
+        // Rifle = GameObject.Find("ScifiRifleWLT78Receiver");
+        animator = GameObject.Find("FreeTestCharacterAsuna").GetComponent<Animator>();
     }
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Rifle.SetActive(false);
+        // Rifle.SetActive(false);
+        animator.SetBool("Rifle_Active", false);
     }
 
 }

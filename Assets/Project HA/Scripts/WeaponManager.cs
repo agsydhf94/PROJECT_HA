@@ -59,7 +59,9 @@ public class WeaponManager : MonoBehaviour
     {
         switch(currentWeaponType)
         {
-            case "Gun":
+            case "Rifle":
+                break;
+            case "Handgun":
                 break;
         }
     }

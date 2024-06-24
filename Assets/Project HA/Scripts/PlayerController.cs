@@ -36,6 +36,8 @@ namespace HA
         public InteractionSensor interactionSensor;
 
 
+        public AnimationEventListener animationEventListener;
+
 
         private Camera mainCamera;
         private CharacterController controller;
@@ -85,6 +87,9 @@ namespace HA
 
         private void Awake()
         {
+            animationEventListener = GetComponentInChildren<AnimationEventListener>();
+            animationEventListener.OnTakeAnimationEvent += OnReceiveAnimationEvent;
+
             animator = GetComponentInChildren<Animator>();
             controller = GetComponent<CharacterController>();
             mainCamera = Camera.main;
@@ -97,6 +102,14 @@ namespace HA
 
             interactionSensor = GameObject.Find("Interaction Sensor").GetComponent<InteractionSensor>();
 
+        }
+
+        private void OnReceiveAnimationEvent(string eventName)
+        {
+            if (eventName.Equals("Equip_Rifle"))
+            {
+                currentWeapon.gameObject.SetActive(true);
+            }
         }
 
         private void OnEnable()
@@ -213,11 +226,16 @@ namespace HA
             {
                 isArmed = true;
                 animator.SetBool("isArmed", true);
+                //bool isEquipped = animator.GetBool("Rifle_Active");
+                //currentWeapon.gameObject.SetActive(true);
+
             }
             else if(Input.GetKeyDown(KeyCode.U) && isArmed)
             {
                 isArmed = false;
                 animator.SetBool("isArmed", false);
+                //bool isEquipped = animator.GetBool("Rifle_Active");
+                currentWeapon.gameObject.SetActive(false);
             }
 
             isShooting = Input.GetKey(KeyCode.Mouse0) && currentWeapon.currentBulletCount > 0;
