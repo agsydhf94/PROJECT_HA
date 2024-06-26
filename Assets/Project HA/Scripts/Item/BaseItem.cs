@@ -10,7 +10,7 @@ public class BaseItem : MonoBehaviour
         ARMOUR = 1,
         CLOTHING = 2,
         HEALTH = 3,
-        POTION = 4
+        POTION = 4,
     }
 
     [SerializeField]
