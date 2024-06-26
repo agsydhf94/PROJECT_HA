@@ -6,7 +6,7 @@ public class BaseItem : MonoBehaviour
 {
     public enum ItemCategory
     {
-        WEAPON = 0,
+        WEAPON_RIFLE = 0,
         ARMOUR = 1,
         CLOTHING = 2,
         HEALTH = 3,

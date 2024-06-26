@@ -13,19 +13,19 @@ public class InventoryItem : BaseItem
 
     public ItemCategory Category
     {
-        get { return this.category; }
-        set { this.category = value; }
+        get { return category; }
+        set { category = value; }
     }
 
     public float Strength
     {
-        get { return this.strength; }
-        set { this.strength = value; }
+        get { return strength; }
+        set { strength = value; }
     }
 
     public float Weight
     {
-        get { return this.weight; }
-        set { this.weight = value; }
+        get { return weight; }
+        set { weight = value; }
     }
 }

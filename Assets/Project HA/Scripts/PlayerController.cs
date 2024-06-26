@@ -71,7 +71,7 @@ namespace HA
         [Header("Weapon Holder")]
         public GameObject weaponHolder;
         public Weapon currentWeapon;
-        public GameObject scifiRifle;
+        public GameObject scifiRifle_Dummy;
         public RigBuilder rigbuilder;
 
         
@@ -100,7 +100,7 @@ namespace HA
 
             
 
-            scifiRifle = GameObject.Find("ScifiRifleWLT78Receiver");
+            scifiRifle_Dummy = GameObject.Find("ScifiRifleWLT78MasterPrefab_Dummy");
             rigbuilder = GetComponentInChildren<RigBuilder>();
 
             interactionSensor = GameObject.Find("Interaction Sensor").GetComponent<InteractionSensor>();
@@ -112,6 +112,7 @@ namespace HA
             if(name.Equals("Holster_Rifle"))
             {
                 currentWeapon.gameObject.SetActive(false);
+                scifiRifle_Dummy.gameObject.SetActive(true);
             }
         }
 
@@ -120,6 +121,7 @@ namespace HA
             if (eventName.Equals("Equip_Rifle"))
             {
                 currentWeapon.gameObject.SetActive(true);
+                scifiRifle_Dummy.gameObject.SetActive(false);
             }
         }
 

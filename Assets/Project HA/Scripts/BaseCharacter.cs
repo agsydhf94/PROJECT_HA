@@ -14,44 +14,44 @@ public class BaseCharacter : MonoBehaviour
 
     public string NAME
     {
-        get { return this.name; }
-        set { this.name = value; }
+        get { return name; }
+        set { name = value; }
     }
 
     public string DESCRIPTION
     {
-        get { return this.description; }
-        set { this.description = value; }
+        get { return description; }
+        set { description = value; }
     }
 
     public float STRENGTH
     {
-        get { return this.strength; }
-        set { this.strength = value; }
+        get { return strength; }
+        set { strength = value; }
     }
 
     public float DEFENCE
     {
-        get { return this.defense; }
-        set { this.defense = value; }
+        get { return defense; }
+        set { defense = value; }
     }
 
     public float DEXTERITY
     {
-        get { return this.dexterity; }
-        set { this.dexterity = value; }
+        get { return dexterity; }
+        set { dexterity = value; }
     }
 
     public float INTELLIGENCE
     {
-        get { return this.intelligence; }
-        set { this.intelligence = value; }
+        get { return intelligence; }
+        set { intelligence = value; }
     }
 
     public float HEALTH
     {
-        get { return this.health; }
-        set { this.health = value; }
+        get { return health; }
+        set { health = value; }
     }
 
 
