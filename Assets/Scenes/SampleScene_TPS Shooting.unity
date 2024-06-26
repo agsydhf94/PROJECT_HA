@@ -3462,7 +3462,7 @@ MonoBehaviour:
   isArmed: 0
   weaponHolder: {fileID: 534010607}
   currentWeapon: {fileID: 0}
-  scifiRifle: {fileID: 0}
+  scifiRifle_Dummy: {fileID: 0}
   rigbuilder: {fileID: 0}
 --- !u!143 &1344577014
 CharacterController:
@@ -4442,7 +4442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8969659466410684204, guid: af33e536fe4485549a3dba5a469eae07, type: 3}
       propertyPath: m_Name
-      value: ScifiRifleWLT78MasterPrefab
+      value: ScifiRifleWLT78MasterPrefab_Dummy
       objectReference: {fileID: 0}
     - target: {fileID: 8969659466410684204, guid: af33e536fe4485549a3dba5a469eae07, type: 3}
       propertyPath: m_IsActive
@@ -4919,6 +4919,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 103576, guid: 79aa677bbe2b9a74b91bad978448ce88, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128680, guid: 79aa677bbe2b9a74b91bad978448ce88, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128680, guid: 79aa677bbe2b9a74b91bad978448ce88, type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 149494, guid: 79aa677bbe2b9a74b91bad978448ce88, type: 3}
