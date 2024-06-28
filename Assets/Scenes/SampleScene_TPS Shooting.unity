@@ -4158,6 +4158,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1344577012}
   - component: {fileID: 1344577013}
+  - component: {fileID: 1344577017}
+  - component: {fileID: 1344577016}
   - component: {fileID: 1344577014}
   - component: {fileID: 1344577015}
   m_Layer: 20
@@ -4263,6 +4265,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bf68a4490cced4eb8252a3a88bc4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1344577016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344577011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a80a025752c4744cba6a0438a131e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  description: 
+  category: 0
+  strength: 0
+  weight: 0
+--- !u!114 &1344577017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344577011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 498e448fc0b9d414ebf4ca5d55f2742f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  description: 
 --- !u!1001 &1350084188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6539,6 +6572,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2023603194}
   - component: {fileID: 2023603193}
+  - component: {fileID: 2023603197}
+  - component: {fileID: 2023603196}
+  - component: {fileID: 2023603195}
   m_Layer: 0
   m_Name: HA.GameMaster
   m_TagString: Untagged
@@ -6563,6 +6599,7 @@ MonoBehaviour:
   character_Customization: {fileID: 0}
   current_Scene:
     m_Handle: 0
+  inventorySystem: {fileID: 0}
   Display_Settings: 0
   ui_Controller: {fileID: 0}
   level: 0
@@ -6583,6 +6620,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2023603195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023603192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622b02a3bde05384380ccbb326aede7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+  armour: []
+  clothing: []
+  health: []
+  potion: []
+--- !u!114 &2023603196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023603192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a80a025752c4744cba6a0438a131e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  description: 
+  category: 0
+  strength: 0
+  weight: 0
+--- !u!114 &2023603197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023603192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 498e448fc0b9d414ebf4ca5d55f2742f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  description: 
 --- !u!1 &2069147003
 GameObject:
   m_ObjectHideFlags: 0
