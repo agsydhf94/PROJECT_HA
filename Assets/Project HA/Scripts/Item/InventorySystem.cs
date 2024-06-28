@@ -30,7 +30,24 @@ public class InventorySystem : MonoBehaviour
         set { selectedArmor = value; } 
     }
 
+    /*
+    void SampleFunction()
+    {
+        // GameMaster 스크립트를 사용하고자 하는데
+        // 그러려면 해당 스크립트가 들어있는 게임오브젝트 찾고
+        // 오브젝트 찾았으면 안에 들어있는 GameMaster 스크립트에 접근해서
+        // GameMaster 스크립트 안에 있는 것들을 막 이용하고 싶은 건데 이러면 너무 귀찮다
+        GameObject gameMasterObject =  GameObject.Find("HA.GameMaster");
+        GameMaster gameMasterComp = gameMasterObject.GetComponent<GameMaster>();
+        gameMasterComp.fx_Level = 1;
+        gameMasterComp.MasterVolume(100);
 
+        // GameMaster 스크립트 내에서 이미 GameMaster 타입의 static 변수 instance 가 생성되어 있고
+        // 이를 바로 접근할 수 있다
+        GameMaster.instance.fx_Level = 1;
+        GameMaster.instance.MasterVolume(100);
+    }
+    */
 
     public InventorySystem()
     {
@@ -113,13 +130,13 @@ public class InventorySystem : MonoBehaviour
 	인벤토리 UI 임시 작업 중(그리드 레이아웃, 마우스 스크롤)
 
 to do until next week : 아이템 인벤토리 완성(UI및 아이템 설명 표시까지)
-                             시간되면 무기전환 시스템 만들기(라이플, 권총, 카타나 등)
+                        시간되면 무기전환 시스템 만들기(라이플, 권총, 카타나 등)
 
 앞으로 하고 싶은 것 : 스킬 구현(애니메이션, 스킬 발동 시 데미지 구역 만들기, 쿨타임)
-		   적 스폰 및 AI
-		   보스 패턴
-	               캐릭터 경험치 시스템
-                           상점 시스템(인벤토리와 연계)
+		             적 스폰 및 AI
+		             보스 패턴
+	                 캐릭터 경험치 시스템
+                     상점 시스템(인벤토리와 연계)
 
 wepapon currenwea 넣고 꺼내는
 

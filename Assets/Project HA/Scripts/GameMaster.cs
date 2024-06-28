@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 public class GameMaster : MonoBehaviour
 {
     public static GameMaster instance;
+    // Static은 얼마나 많은 인스턴스가 생기던 간에
+    // 맨 처음 선언된 순간부터 여러 인스턴스를 거쳐 수정된 사항이 이어져 내려오게 되는 속성이 있다
+    // 즉, 모든 인스턴스가 메모리 공간에 할당된 오직 하나의 객체를 가리킨다
 
     // 플레이어 캐릭터 참조를 갖고
     // 플레이어 캐릭터의 시작 위치 참조를 갖는다
@@ -28,12 +31,10 @@ public class GameMaster : MonoBehaviour
     public float fx_Level = 1.0f;
 
 
-
-
     private void Awake()
     {
         // 싱글턴
-        if(instance == null)
+        if (instance == null)
         { 
             instance = this; 
         }
@@ -64,7 +65,17 @@ public class GameMaster : MonoBehaviour
 
     }
 
-    public void MasterVolume
+    public void MasterVolume(float volume)
+    {
+        instance.audio_Level = volume;
+        instance.GetComponent<AudioSource>().volume = instance.audio_Level;
+    }
+
+    public void StartGame()
+    {
+        // 게임을 시작하는 함수이며, 플레이어가 캐릭터를 커스터마이징하는 신을 로드합니다
+        // SceneManager.LoadScene(SceneName.CharacterCustomizaion);
+    }
 
 
 }
