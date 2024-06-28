@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventorySystem : MonoBehaviour
 {
     [SerializeField]
-    private List<InventoryItem> weapons_Rifle = new List<InventoryItem>();
+    private List<InventoryItem> weapons = new List<InventoryItem>();
     [SerializeField]
     private List<InventoryItem> armour = new List<InventoryItem>();
     [SerializeField]
@@ -39,7 +39,7 @@ public class InventorySystem : MonoBehaviour
 
     public void ClearInventory()
     {
-        weapons_Rifle.Clear();
+        weapons.Clear();
         armour.Clear();
         clothing.Clear();
         health.Clear();
@@ -52,8 +52,8 @@ public class InventorySystem : MonoBehaviour
     {
         switch(item.Category)
         {
-            case BaseItem.ItemCategory.WEAPON_RIFLE:
-                weapons_Rifle.Add(item);
+            case BaseItem.ItemCategory.WEAPON:
+                weapons.Add(item);
                 break;
 
             case BaseItem.ItemCategory.ARMOUR:
@@ -80,8 +80,8 @@ public class InventorySystem : MonoBehaviour
     {
         switch (item.Category)
         {
-            case BaseItem.ItemCategory.WEAPON_RIFLE:
-                weapons_Rifle.Remove(item);
+            case BaseItem.ItemCategory.WEAPON:
+                weapons.Remove(item);
                 break;
 
             case BaseItem.ItemCategory.ARMOUR:

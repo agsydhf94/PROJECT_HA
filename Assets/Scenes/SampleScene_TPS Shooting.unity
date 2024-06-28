@@ -5383,6 +5383,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 436964851688234631, guid: a64a85a05149d3e4c9c214650f6a5cc9, type: 3}
   m_PrefabInstance: {fileID: 1769541363}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2023603192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2023603194}
+  - component: {fileID: 2023603193}
+  m_Layer: 0
+  m_Name: HA.GameMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2023603193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023603192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e800755c46eb1ef44ac55d4a985cbf03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2023603194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023603192}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.913162, y: -10.359394, z: 6.2630424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2069147003
 GameObject:
   m_ObjectHideFlags: 0
@@ -20281,6 +20325,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1460143517}
+  - {fileID: 2023603194}
   - {fileID: 2069147004}
   - {fileID: 705507995}
   - {fileID: 590864141}

@@ -6,7 +6,7 @@ public class BaseItem : MonoBehaviour
 {
     public enum ItemCategory
     {
-        WEAPON_RIFLE = 0,
+        WEAPON = 0,
         ARMOUR = 1,
         CLOTHING = 2,
         HEALTH = 3,
@@ -21,13 +21,13 @@ public class BaseItem : MonoBehaviour
 
     public string Name
     {
-        get { return this.name; }
-        set { this.name = value; }
+        get { return name; }
+        set { name = value; }
     }
 
     public string Description
     {
-        get { return this.description; }
-        set { this.description = value; }
+        get { return description; }
+        set { description = value; }
     }
 }
