@@ -125,6 +125,8 @@ namespace HA
             }
         }
 
+        // 상호작용
+
         private void OnEnable()
         {
             interactionSensor.OnDetected += OnDetectedInteraction;
@@ -141,6 +143,7 @@ namespace HA
             InteractionUI.Instance.AddInteractionData(interactable);
         }
 
+        // 상호작용
 
         private void Start()
         {

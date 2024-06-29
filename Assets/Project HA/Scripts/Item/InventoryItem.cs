@@ -30,4 +30,14 @@ public class InventoryItem : BaseItem
         get { return weight; }
         set { weight = value; }
     }
+
+    public void CopyInventoryItem(InventoryItem myItem)
+    {
+        Debug.Log(myItem.Category);
+        Category = myItem.Category;
+        Description = myItem.Description;
+        Name = myItem.Name;
+        Strength = myItem.Strength;
+        Weight = myItem.Weight;
+    }
 }

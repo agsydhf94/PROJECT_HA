@@ -23,7 +23,7 @@ namespace HA
         // 현재 신/레벨의 참조를 받는다
         public Scene current_Scene;
 
-        public InventorySystem inventorySystem;
+        public InventorySystem inventory;
 
         // UI 요소들 참조
         public bool Display_Settings = false;
@@ -47,7 +47,9 @@ namespace HA
                 // instance.inventorySystem = new InventorySystem();
                 // InventoryItem temp = new InventoryItem();
 
-                instance.inventorySystem = gameObject.GetComponent<InventorySystem>();
+                instance.inventory = gameObject.GetComponent<InventorySystem>();
+
+                // 테스트 삼아서 아이템 그냥 생성해본 것(아이템 인스턴스)
                 InventoryItem temp = gameObject.GetComponent<InventoryItem>();
 
                 temp.Category = BaseItem.ItemCategory.CLOTHING;
@@ -55,10 +57,10 @@ namespace HA
                 temp.Description = "Testing the item type";
                 temp.Strength = 0.5f;
                 temp.Weight = 0.2f;
-                instance.inventorySystem.AddItem(temp);
+                instance.inventory.AddItem(temp);
 
                 Debug.Log(instance);
-                Debug.Log(instance.inventorySystem);
+                Debug.Log(instance.inventory);
                 Debug.Log(temp);
             }
 
