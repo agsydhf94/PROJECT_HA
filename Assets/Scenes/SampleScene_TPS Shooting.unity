@@ -1038,6 +1038,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &322051541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 322051543}
+  - component: {fileID: 322051542}
+  m_Layer: 0
+  m_Name: HA.UIController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &322051542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322051541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd7e932a5b14ba479a6582465f5cef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsCanvas: {fileID: 0}
+  controlMainVolume: {fileID: 0}
+--- !u!4 &322051543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322051541}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.913162, y: -10.359394, z: 6.2630424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &327648362 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2147316543962917187, guid: 9aed30026abb08544a0e1604a7f03803, type: 3}
@@ -6571,10 +6617,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2023603194}
-  - component: {fileID: 2023603193}
+  - component: {fileID: 2023603195}
   - component: {fileID: 2023603197}
   - component: {fileID: 2023603196}
-  - component: {fileID: 2023603195}
   m_Layer: 0
   m_Name: HA.GameMaster
   m_TagString: Untagged
@@ -6582,29 +6627,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2023603193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023603192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e800755c46eb1ef44ac55d4a985cbf03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCharacter: {fileID: 0}
-  start_Position: {fileID: 0}
-  character_Customization: {fileID: 0}
-  current_Scene:
-    m_Handle: 0
-  inventorySystem: {fileID: 0}
-  Display_Settings: 0
-  ui_Controller: {fileID: 0}
-  level: 0
-  audio_Level: 1
-  fx_Level: 1
 --- !u!4 &2023603194
 Transform:
   m_ObjectHideFlags: 0
@@ -6629,14 +6651,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2023603192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622b02a3bde05384380ccbb326aede7c, type: 3}
+  m_Script: {fileID: 11500000, guid: e800755c46eb1ef44ac55d4a985cbf03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: []
-  armour: []
-  clothing: []
-  health: []
-  potion: []
+  playerCharacter: {fileID: 0}
+  start_Position: {fileID: 0}
+  character_Customization: {fileID: 0}
+  current_Scene:
+    m_Handle: 0
+  inventorySystem: {fileID: 0}
+  Display_Settings: 0
+  ui_Controller: {fileID: 0}
+  level: 78
+  audio_Level: 1
+  fx_Level: 1
 --- !u!114 &2023603196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6663,11 +6691,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2023603192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498e448fc0b9d414ebf4ca5d55f2742f, type: 3}
+  m_Script: {fileID: 11500000, guid: 622b02a3bde05384380ccbb326aede7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  description: 
+  weapons: []
+  armour: []
+  clothing: []
+  health: []
+  potion: []
 --- !u!1 &2069147003
 GameObject:
   m_ObjectHideFlags: 0
@@ -21582,3 +21613,4 @@ SceneRoots:
   - {fileID: 299688947}
   - {fileID: 76631682}
   - {fileID: 739844143}
+  - {fileID: 322051543}

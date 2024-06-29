@@ -28,7 +28,7 @@ namespace HA
         // UI 요소들 참조
         public bool Display_Settings = false;
         public UIController ui_Controller;
-        public int level = 0;
+        public int level = 78;
 
         // 배경음, FX사운드(효과음)의 초기 오디오 레벨
         public float audio_Level = 1.0f;
@@ -43,8 +43,12 @@ namespace HA
                 instance = this;
 
                 // 인벤토리 시스템 초기화
-                instance.inventorySystem = new InventorySystem();
-                InventoryItem temp = new InventoryItem();
+                // 2024.06.29 MonoBehavior 를 상속받는 클래스는 new 키워드로 인스턴스화 할 수 없다
+                // instance.inventorySystem = new InventorySystem();
+                // InventoryItem temp = new InventoryItem();
+
+                instance.inventorySystem = gameObject.GetComponent<InventorySystem>();
+                InventoryItem temp = gameObject.GetComponent<InventoryItem>();
 
                 temp.Category = BaseItem.ItemCategory.CLOTHING;
                 temp.Name = "Testing";
@@ -52,6 +56,10 @@ namespace HA
                 temp.Strength = 0.5f;
                 temp.Weight = 0.2f;
                 instance.inventorySystem.AddItem(temp);
+
+                Debug.Log(instance);
+                Debug.Log(instance.inventorySystem);
+                Debug.Log(temp);
             }
 
             
