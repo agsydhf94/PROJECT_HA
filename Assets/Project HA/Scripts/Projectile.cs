@@ -10,6 +10,7 @@ namespace HA
     {
         public float speed = 30f;
         public float lifeTime = 10;
+        public float rifle_power = 20.0f;
 
         public GameObject metalImpactPrefab;
         public GameObject woodImpactPrefab;
@@ -54,7 +55,7 @@ namespace HA
             IDamagable damagable = other.GetComponent<IDamagable>();
             if (damagable != null)
             {
-                damagable.Damage();
+                damagable.Damage(rifle_power);
             }
         }
 

@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour, IDamagable
 {
     public float enemyHp = 100.0f;
     public bool isDead = false;
+    
 
 
 
@@ -24,11 +25,11 @@ public class Enemy : MonoBehaviour, IDamagable
     }
 
        
-    public void Damage()
+    public void Damage(float damagePoint)
     {
         if(!isDead)
         {
-            enemyHp -= 20.0f;
+            enemyHp -= damagePoint;
         }
     }
 

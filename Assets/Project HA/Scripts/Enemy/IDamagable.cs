@@ -6,6 +6,6 @@ namespace HA
 {
     public interface IDamagable
     {
-        public void Damage();
+        public void Damage(float damage);
     }
 }

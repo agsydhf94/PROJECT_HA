@@ -6,20 +6,11 @@ using UnityEngine;
 [Serializable]
 public class BaseItem : MonoBehaviour
 {
-    public enum ItemCategory
-    {
-        WEAPON = 0,
-        ARMOUR = 1,
-        CLOTHING = 2,
-        HEALTH = 3,
-        POTION = 4,
-    }
+    [SerializeField]
+    private string name;  // 아이템 이름
 
     [SerializeField]
-    private string name;
-
-    [SerializeField]
-    private string description;
+    private string description;  // 아이템 설명
 
     public string Name
     {

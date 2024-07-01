@@ -3,41 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class InventoryItem : BaseItem
+namespace HA
 {
-    [SerializeField]
-    private ItemCategory category;
-    [SerializeField]
-    private float strength;
-    [SerializeField]
-    private float weight;
-
-    public ItemCategory Category
+    [Serializable]
+    public class InventoryItem : BaseItem
     {
-        get { return category; }
-        set { category = value; }
-    }
+        [SerializeField]
+        private ItemCategory category;
+        [SerializeField]
+        private float strength;
+        [SerializeField]
+        private float weight;
 
-    public float Strength
-    {
-        get { return strength; }
-        set { strength = value; }
-    }
+        public ItemCategory Category
+        {
+            get { return category; }
+            set { category = value; }
+        }
 
-    public float Weight
-    {
-        get { return weight; }
-        set { weight = value; }
-    }
+        public float Strength
+        {
+            get { return strength; }
+            set { strength = value; }
+        }
 
-    public void CopyInventoryItem(InventoryItem myItem)
-    {
-        Debug.Log(myItem.Category);
-        Category = myItem.Category;
-        Description = myItem.Description;
-        Name = myItem.Name;
-        Strength = myItem.Strength;
-        Weight = myItem.Weight;
+        public float Weight
+        {
+            get { return weight; }
+            set { weight = value; }
+        }
+
+        public void CopyInventoryItem(InventoryItem myItem)
+        {
+            Debug.Log(myItem.Category);
+            Category = myItem.Category;
+            Description = myItem.Description;
+            Name = myItem.Name;
+            Strength = myItem.Strength;
+            Weight = myItem.Weight;
+        }
     }
 }
+

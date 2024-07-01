@@ -9,8 +9,11 @@ namespace HA
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(firePosition.position, firePosition.position + firePosition.forward * range);
+            if (firePosition)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(firePosition.position, firePosition.position + firePosition.forward * range);
+            }
 
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(Camera.main.transform.position, Camera.main.transform.position + Camera.main.transform.forward * range);

@@ -52,7 +52,7 @@ namespace HA
                 // 테스트 삼아서 아이템 그냥 생성해본 것(아이템 인스턴스)
                 InventoryItem temp = gameObject.GetComponent<InventoryItem>();
 
-                temp.Category = BaseItem.ItemCategory.CLOTHING;
+                temp.Category = ItemCategory.CLOTHING;
                 temp.Name = "Testing";
                 temp.Description = "Testing the item type";
                 temp.Strength = 0.5f;
