@@ -8,7 +8,7 @@ namespace HA
     public class Interaction_Item : MonoBehaviour, IInteractable
     {
 
-        // public InventoryItem inventoryItem;
+         public InventoryItem inventoryItem_copy;
 
 
         public string Key => "ItemBox." + gameObject.GetHashCode();
@@ -19,7 +19,8 @@ namespace HA
         {
             // to do : Add item to inventory
             InventoryItem myItem = GetComponent<InventoryItem>();
-            // myItem.CopyInventoryItem(inventoryItem);
+            
+            // myItem.CopyInventoryItem(inventoryItem_copy);
 
 
             // 인벤토리에 아이템 추가
