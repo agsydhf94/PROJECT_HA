@@ -20,6 +20,10 @@ namespace HA
         public GameObject start_Position;
         public GameObject character_Customization;
 
+        // // 7/3
+        public bool isGameOver;
+        public CharacterBase playerCharacterbase;
+
         // 현재 신/레벨의 참조를 받는다
         public Scene current_Scene;
 
@@ -41,6 +45,8 @@ namespace HA
             if (instance == null)
             {
                 instance = this;
+                // 7/13
+                playerCharacterbase.onCharacterDead += GameOverCheck;
 
                 // 인벤토리 시스템 초기화
                 // 2024.06.29 MonoBehavior 를 상속받는 클래스는 new 키워드로 인스턴스화 할 수 없다
@@ -62,6 +68,9 @@ namespace HA
                 Debug.Log(instance);
                 Debug.Log(instance.inventory);
                 Debug.Log(temp);
+
+                
+
             }
 
             
@@ -70,13 +79,17 @@ namespace HA
             {
                 Destroy(this);
             }
-
+            
 
             // 한 씬에서 다른 씬으로 넘어갈 때 게임 오브젝트가 유지되도록 한다
             DontDestroyOnLoad(this);
 
         }
-
+        public void GameOverCheck()
+        {
+            // to do : game over
+            Debug.Log("enemy destroyed");
+        }
 
         // 초기화
         private void Start()
