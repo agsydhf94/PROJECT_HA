@@ -98,7 +98,7 @@ namespace HA
                 //    health.Add(item);
                 //    break;
                 case ItemCategory.POTION:
-                    potion.Add(new ItemDataBase()
+                    potion.Add(new PotionItemData()
                     {
                         itemName = item.Name,
                         itemDescription = item.Description,

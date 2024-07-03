@@ -15,7 +15,7 @@ namespace HA
 
         public string Message => "Pick Up";
 
-        public void Interact()
+        public virtual void Interact()
         {
             // to do : Add item to inventory
             InventoryItem myItem = GetComponent<InventoryItem>();

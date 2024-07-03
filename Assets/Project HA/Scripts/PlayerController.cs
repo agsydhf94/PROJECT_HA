@@ -9,7 +9,7 @@ namespace HA
 {
     public class PlayerController : MonoBehaviour
     {
-
+        public static PlayerController Instance { get; private set; } = null;
 
         [Header("Camera Clamping")]
         public float topClamp = 70.0f;
@@ -87,6 +87,8 @@ namespace HA
 
         private void Awake()
         {
+            Instance = this;
+
             animationEventListener = GetComponentInChildren<AnimationEventListener>();
             animationEventListener.OnTakeAnimationEvent += RifleDrawTiming;
             animationEventListener.OnTakeAnimationEvent += RifleHolsterTiming;
@@ -105,6 +107,11 @@ namespace HA
 
             interactionSensor = GameObject.Find("Interaction Sensor").GetComponent<InteractionSensor>();
 
+        }
+
+        private void OnDestroy()
+        {
+            Instance = null;
         }
 
         private void RifleHolsterTiming(string name)
