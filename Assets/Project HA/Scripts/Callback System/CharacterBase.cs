@@ -16,9 +16,16 @@ namespace HA
         public delegate void OnCharacterDead();
         public OnCharacterDead onCharacterDead;
 
+        private Renderer[] characterRenderers;
+
         // public System.Action<float, float> onDamagedAction;
 
         // public event OnDamage onDamageCallbackEvent;
+
+        private void Awake()
+        {
+            characterRenderers = GetComponentsInChildren<Renderer>();
+        }
 
         public void Damage(float damage)
         {
