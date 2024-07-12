@@ -46,7 +46,9 @@ namespace HA
             {
                 instance = this;
                 // 7/13
+                Debug.Log(playerCharacterbase);
                 playerCharacterbase.onCharacterDead += GameOverCheck;
+                
 
                 // 인벤토리 시스템 초기화
                 // 2024.06.29 MonoBehavior 를 상속받는 클래스는 new 키워드로 인스턴스화 할 수 없다
@@ -56,6 +58,7 @@ namespace HA
                 instance.inventory = gameObject.GetComponent<InventorySystem>();
 
                 // 테스트 삼아서 아이템 그냥 생성해본 것(아이템 인스턴스)
+                /*
                 InventoryItem temp = gameObject.GetComponent<InventoryItem>();
 
                 temp.Category = ItemCategory.CLOTHING;
@@ -68,7 +71,7 @@ namespace HA
                 Debug.Log(instance);
                 Debug.Log(instance.inventory);
                 Debug.Log(temp);
-
+                */
                 
 
             }
@@ -85,11 +88,7 @@ namespace HA
             DontDestroyOnLoad(this);
 
         }
-        public void GameOverCheck()
-        {
-            // to do : game over
-            Debug.Log("enemy destroyed");
-        }
+        
 
         // 초기화
         private void Start()
@@ -106,6 +105,12 @@ namespace HA
 
             instance.ui_Controller.settingsCanvas.gameObject.SetActive(instance.Display_Settings);
 
+        }
+
+        public void GameOverCheck()
+        {
+            // to do : game over
+            Debug.Log("enemy destroyed");
         }
 
         public void MasterVolume(float volume)

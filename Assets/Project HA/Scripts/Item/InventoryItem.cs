@@ -6,12 +6,8 @@ using UnityEngine;
 namespace HA
 {
     [Serializable]
-    public class InventoryItem : BaseItem
+    public class InventoryItem : ItemDataBase
     {
-        [SerializeField]
-        private ItemCategory category;
-        [SerializeField]
-        private float strength;
         [SerializeField]
         private float weight;
 
@@ -21,12 +17,19 @@ namespace HA
             set { category = value; }
         }
 
-        public float Strength
+        public string Name
         {
-            get { return strength; }
-            set { strength = value; }
+            get { return itemName; }
+            set { itemName = value; }
         }
 
+        public string Description
+        {
+            get { return itemDescription; }
+            set { itemDescription = value; }
+        }
+
+        
         public float Weight
         {
             get { return weight; }
@@ -37,9 +40,8 @@ namespace HA
         {
             Debug.Log(myItem.Category);
             Category = myItem.Category;
-            Description = myItem.Description;
-            Name = myItem.Name;
-            Strength = myItem.Strength;
+            Description = myItem.itemDescription;
+            Name = myItem.itemName;
             Weight = myItem.Weight;
         }
     }

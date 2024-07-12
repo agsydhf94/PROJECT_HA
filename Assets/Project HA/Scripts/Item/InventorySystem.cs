@@ -13,8 +13,6 @@ namespace HA
         [SerializeField]
         private List<ArmourItemData> armour = new List<ArmourItemData>();
         [SerializeField]
-        private List<ClothItemData> clothing = new List<ClothItemData>();
-        [SerializeField]
         private List<HealthItemData> health = new List<HealthItemData>();
         [SerializeField]
         private List<PotionItemData> potion = new List<PotionItemData>();
@@ -62,7 +60,6 @@ namespace HA
         {
             weapons.Clear();
             armour.Clear();
-            clothing.Clear();
             health.Clear();
             potion.Clear();
         }
@@ -85,15 +82,7 @@ namespace HA
                 //case ItemCategory.ARMOUR:
                 //    armour.Add(item);
                 //    break;
-                case ItemCategory.CLOTHING:
-                    clothing.Add(new ClothItemData()
-                    {
-                        itemID = "",
-                        category = ItemCategory.CLOTHING,
-                        itemName = item.Name,
-                        remainDurability = 99,
-                    });
-                    break;
+
                 //case ItemCategory.HEALTH:
                 //    health.Add(item);
                 //    break;

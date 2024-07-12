@@ -7,6 +7,7 @@ TagManager:
   - FxTemporaire
   - Weapon
   - Item
+  - UI
   layers:
   - Default
   - TransparentFX

@@ -12,8 +12,8 @@ namespace HA
     {
         WEAPON = 0,
         ARMOUR = 1,
-        CLOTHING = 2,
-        HEALTH = 3,
-        POTION = 4,
+        HEALTH = 2,
+        POTION = 3,
+        MISC = 4,
     }
 }

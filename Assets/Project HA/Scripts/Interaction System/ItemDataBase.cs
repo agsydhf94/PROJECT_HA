@@ -11,6 +11,8 @@ namespace HA
         public string itemName;
         public string itemDescription;
         public ItemCategory category;
+
+        
     }
 
     public class WeaponItemData : ItemDataBase
