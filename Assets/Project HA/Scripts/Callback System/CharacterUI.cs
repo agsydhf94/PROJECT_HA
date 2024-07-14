@@ -3,10 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CharacterUI: MonoBehaviour
 {
     public Image hpBar;
+    public Image mpBar;
+
+    [SerializeField]
+    private TMP_Text hpText;
 
     public CharacterBase linkedCharacter;
 
@@ -19,5 +24,6 @@ public class CharacterUI: MonoBehaviour
     public void RefreshHpBar(float currentHp, float maxHp)
     {
         hpBar.fillAmount = currentHp / maxHp;
+        hpText.text = linkedCharacter.currentHP.ToString();
     }
 }

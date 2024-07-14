@@ -20,19 +20,19 @@ namespace HA
 
         private void Awake()
         {
-            var characterBase = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterBase>();
+            characterBase = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterBase>();
         }
 
         public void UseItem()
         {
             if (statToChange == StatToChange.HEALTH)
             {
-                characterBase.currentHP += amountToChangeAttribute;
+                characterBase.currentHP += amountToChangeStat;
             }
 
             if (statToChange == StatToChange.MANA)
             {
-                characterBase.currentMP += amountToChangeAttribute;
+                characterBase.currentMP += amountToChangeStat;
             }
         }
 
