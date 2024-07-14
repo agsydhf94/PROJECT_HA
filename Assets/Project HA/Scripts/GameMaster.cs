@@ -103,7 +103,7 @@ namespace HA
             }
 
 
-            instance.ui_Controller.settingsCanvas.gameObject.SetActive(instance.Display_Settings);
+            // instance.ui_Controller.settingsCanvas.gameObject.SetActive(instance.Display_Settings);
 
         }
 

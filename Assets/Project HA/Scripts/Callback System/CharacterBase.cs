@@ -10,6 +10,9 @@ namespace HA
         public float currentHP;
         public float maxHP;
 
+        public float currentMP;
+        public float maxMP;
+
         public delegate void OnDamage(float currentHP, float maxHP);
         public OnDamage onDamageCallback;
 
