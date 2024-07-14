@@ -17,6 +17,9 @@ namespace HA
         public string itemDescription;
         public Sprite emptySprite;
 
+        [SerializeField]
+        private int maxNumberOfItems;
+
         // Item Slot
         [SerializeField]
         private TMP_Text quantityText;
@@ -41,17 +44,48 @@ namespace HA
             inventoryManager = GameObject.Find("HA.InventoryUI").GetComponent<InventoryManager>();
         }
 
-        public void AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
+        public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
         {
-            this.itemName = itemName;
-            this.quantity = quantity;
-            this.itemSprite = itemSprite;
-            this.itemDescription = itemDescription;
-            isFull = true;
+            // Check to see if the slot if already full
+            if(isFull)
+            {
+                return quantity;
+            }
 
-            quantityText.text = quantity.ToString();
-            quantityText.enabled = true;
+            // update Name
+            this.itemName = itemName;
+
+            // update Image
+            this.itemSprite = itemSprite;
             itemImage.sprite = itemSprite;
+
+            // update Description
+            this.itemDescription = itemDescription;
+
+            // update Quantity
+            this.quantity += quantity;
+
+            
+
+            
+            if(this.quantity >= maxNumberOfItems)
+            {
+                quantityText.text = maxNumberOfItems.ToString();
+                quantityText.enabled = true;
+                isFull = true;
+
+                // return the leftovers
+                int extraItems = this.quantity - maxNumberOfItems;
+                this.quantity = maxNumberOfItems;
+                return extraItems;
+            }
+
+            // update the quantity text
+            quantityText.text = this.quantity.ToString();
+            quantityText.enabled = true;
+
+            return 0;
+
         }
 
         public void OnPointerClick(PointerEventData eventData)
