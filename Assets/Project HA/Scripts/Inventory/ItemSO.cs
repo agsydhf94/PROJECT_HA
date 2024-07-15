@@ -1,4 +1,5 @@
 using HA;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +10,8 @@ namespace HA
     [CreateAssetMenu]
     public class ItemSO : ScriptableObject
     {
+        public static ItemSO instance;
+
         public string itemName;
         public StatToChange statToChange = new StatToChange();
         public int amountToChangeStat;
@@ -22,6 +25,8 @@ namespace HA
         //{
         //    characterBase = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterBase>();
         //}
+
+        
 
         public void UseItem()
         {

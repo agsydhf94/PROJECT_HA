@@ -22,6 +22,7 @@ public class CharacterUI: MonoBehaviour
 
         //linkedCharacter.onDamageCallback += RefreshHpBar;  // "델리게이트에 chain을 건다" 라고 표현
         // linkedCharacter.onDamagedAction += RefreshHpBar;
+
     }
 
     public void RefreshHpBar(float currentHp, float maxHp)

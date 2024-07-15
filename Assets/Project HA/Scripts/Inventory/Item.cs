@@ -25,7 +25,7 @@ public class Item : MonoBehaviour, IInteractable
 
     public string Key => "";
 
-    public string Message => "PickUp";
+    public string Message => $"{itemName}";
 
     
 
