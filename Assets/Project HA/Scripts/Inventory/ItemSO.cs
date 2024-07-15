@@ -16,23 +16,26 @@ namespace HA
         public AttributesToChange attributesToChange = new AttributesToChange();
         public int amountToChangeAttribute;
 
-        public CharacterBase characterBase;
+        //public CharacterBase characterBase;
 
-        private void Awake()
-        {
-            characterBase = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterBase>();
-        }
+        //private void Awake()
+        //{
+        //    characterBase = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterBase>();
+        //}
 
         public void UseItem()
         {
             if (statToChange == StatToChange.HEALTH)
             {
-                characterBase.currentHP += amountToChangeStat;
+                //PlayerController.Instance.PlayerCharacterBase.AddHP(amountToChangeStat);
+                //PlayerController.Instance.PlayerCharacterBase.currentHP += amountToChangeStat;
+                PlayerController.Instance.PlayerCharacterBase.IncreaseHP(amountToChangeStat);
             }
 
             if (statToChange == StatToChange.MANA)
             {
-                characterBase.currentMP += amountToChangeStat;
+                //PlayerController.Instance.PlayerCharacterBase.AddMP(amountToChangeStat);
+                PlayerController.Instance.PlayerCharacterBase.currentMP += amountToChangeStat;
             }
         }
 

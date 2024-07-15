@@ -19,6 +19,10 @@ namespace HA
         public delegate void OnCharacterDead();
         public OnCharacterDead onCharacterDead;
 
+        public System.Action<float, float> OnDamaged;
+        public System.Action<float, float> OnChangedHP;
+        public System.Action<float, float> OnChangedMP;
+
         private Renderer[] characterRenderers;
 
         // public System.Action<float, float> onDamagedAction;
@@ -34,8 +38,13 @@ namespace HA
         {
             currentHP -= damage;
 
-            onDamageCallback(currentHP, maxHP);
+            //if (onDamageCallback != null)
+            //{
+            //    onDamageCallback(currentHP, maxHP);
+            //}
             // onDamagedAction(currentHP, maxHP);
+
+            OnDamaged?.Invoke(currentHP, maxHP);
 
             if (currentHP <= 0)
             {
@@ -48,6 +57,14 @@ namespace HA
         public void DamageDebugButton()
         {
             Damage(20);
+        }
+
+        public void IncreaseHP(float amount)
+        {
+            currentHP += amount;
+            currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+
+            OnChangedHP?.Invoke(currentHP, maxHP);
         }
     }
 }

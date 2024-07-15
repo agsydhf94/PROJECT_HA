@@ -24,7 +24,6 @@ namespace HA
         public GameObject bulletCartridgePrefab;
         public Transform firePosition;
         public Transform bulletCartRidgePosition;
-        public Animator animator;
         public GunController gunController;
         public CrossHair crosshair;
 
@@ -58,7 +57,6 @@ namespace HA
 
         private void Awake()
         {
-            animator = GameObject.Find("FreeTestCharacterAsuna").GetComponent<Animator>();
             gunController = GameObject.Find("WeaponHolder").GetComponent<GunController>();
             crosshair = FindObjectOfType<CrossHair>();
         }
@@ -76,7 +74,7 @@ namespace HA
 
                 // Muzzle 이펙트 만들기
                 var newMuzzle = Instantiate(muzzlePrefab);
-                newMuzzle.transform.SetPositionAndRotation(firePosition.position, firePosition.rotation * Quaternion.Euler(90,0,90));
+                newMuzzle.transform.SetPositionAndRotation(firePosition.position, firePosition.rotation * Quaternion.Euler(90, 0, 90));
                 newMuzzle.gameObject.SetActive(true);
                 Destroy(newMuzzle, 0.12f);
 
@@ -97,19 +95,19 @@ namespace HA
 
         public IEnumerator ReloadCoroutine()
         {
-            if(carryBulletCount > 0)
+            if (carryBulletCount > 0)
             {
                 isReload = true;
-                animator.SetTrigger("Reload");
+
 
                 carryBulletCount += currentBulletCount;
                 currentBulletCount = 0;
 
-                
 
-                    yield return new WaitForSeconds(reloadTime);
 
-                if(carryBulletCount >= reloadBulletCount) // 한 번 장전 가능한 충분한 탄을 소유하고 있다면
+                yield return new WaitForSeconds(reloadTime);
+
+                if (carryBulletCount >= reloadBulletCount) // 한 번 장전 가능한 충분한 탄을 소유하고 있다면
                 {
                     currentBulletCount = reloadBulletCount; // 정상 장전
                     carryBulletCount -= reloadBulletCount; // 장전한 탄 수만큼 소유분에서 차감
@@ -126,7 +124,7 @@ namespace HA
 
         public void CancelReload()
         {
-            if(isReload == true)
+            if (isReload == true)
             {
                 StopAllCoroutines();
                 isReload = false;

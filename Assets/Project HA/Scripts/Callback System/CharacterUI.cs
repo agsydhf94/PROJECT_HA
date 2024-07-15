@@ -13,17 +13,20 @@ public class CharacterUI: MonoBehaviour
     [SerializeField]
     private TMP_Text hpText;
 
-    public CharacterBase linkedCharacter;
+    //public CharacterBase linkedCharacter;
 
     private void Start()
     {
-        linkedCharacter.onDamageCallback += RefreshHpBar;  // "델리게이트에 chain을 건다" 라고 표현
+        PlayerController.Instance.PlayerCharacterBase.OnDamaged += RefreshHpBar;
+        PlayerController.Instance.PlayerCharacterBase.OnChangedHP += RefreshHpBar;
+
+        //linkedCharacter.onDamageCallback += RefreshHpBar;  // "델리게이트에 chain을 건다" 라고 표현
         // linkedCharacter.onDamagedAction += RefreshHpBar;
     }
 
     public void RefreshHpBar(float currentHp, float maxHp)
     {
         hpBar.fillAmount = currentHp / maxHp;
-        hpText.text = linkedCharacter.currentHP.ToString();
+        hpText.text = $"{currentHp:0} / {maxHp:0}";
     }
 }

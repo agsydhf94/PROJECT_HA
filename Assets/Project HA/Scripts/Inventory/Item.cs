@@ -39,6 +39,7 @@ public class Item : MonoBehaviour, IInteractable
         int leftOverItems = inventoryManager.AddItem(itemName, quantity, itemImage, itemDescription);
         if(leftOverItems <= 0)
         {
+            InteractionUI.Instance.RemoveInteractionData(this);
             Destroy(gameObject);
         }
         else

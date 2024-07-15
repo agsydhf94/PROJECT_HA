@@ -11,6 +11,11 @@ namespace HA
     {
         public static PlayerController Instance { get; private set; } = null;
 
+
+        //public CharacterBase PlayerCharacterBase { get { return characterBase; } }
+        public CharacterBase PlayerCharacterBase => characterBase;
+
+
         [Header("Camera Clamping")]
         public float topClamp = 70.0f;
         public float bottomClamp = -30.0f;
@@ -38,7 +43,7 @@ namespace HA
 
         public AnimationEventListener animationEventListener;
 
-
+        private CharacterBase characterBase;
         private Camera mainCamera;
         private CharacterController controller;
         private Animator animator;
@@ -93,6 +98,7 @@ namespace HA
             animationEventListener.OnTakeAnimationEvent += RifleDrawTiming;
             animationEventListener.OnTakeAnimationEvent += RifleHolsterTiming;
 
+            characterBase = GetComponent<CharacterBase>();
             animator = GetComponentInChildren<Animator>();
             controller = GetComponent<CharacterController>();
             mainCamera = Camera.main;
@@ -273,6 +279,7 @@ namespace HA
                         currentWeapon.currentBulletCount < currentWeapon.reloadBulletCount)
                 {
                     currentWeapon.StartCoroutine(currentWeapon.ReloadCoroutine());
+                    animator.SetTrigger("Reload");
                 }
 
 
