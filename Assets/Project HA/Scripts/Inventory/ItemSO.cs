@@ -10,7 +10,7 @@ namespace HA
     [CreateAssetMenu]
     public class ItemSO : ScriptableObject
     {
-        public static ItemSO instance;
+        
 
         public string itemName;
         public StatToChange statToChange = new StatToChange();
