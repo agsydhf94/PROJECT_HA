@@ -104,13 +104,17 @@ namespace HA
         {
             if(thisItemSelected)
             {
-                inventoryManager.UseItem(itemName);
-                this.quantity -= 1;
-                quantityText.text = this.quantity.ToString();
-                if(this.quantity <= 0)
+                bool usable = inventoryManager.UseItem(itemName);
+                if(usable)
                 {
-                    EmptySlot();
+                    this.quantity -= 1;
+                    quantityText.text = this.quantity.ToString();
+                    if (this.quantity <= 0)
+                    {
+                        EmptySlot();
+                    }
                 }
+                
             }
             else
             {

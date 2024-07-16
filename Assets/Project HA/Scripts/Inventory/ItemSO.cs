@@ -19,7 +19,7 @@ namespace HA
         public AttributesToChange attributesToChange = new AttributesToChange();
         public int amountToChangeAttribute;
 
-        //public CharacterBase characterBase;
+        public CharacterBase characterBase => PlayerController.Instance.PlayerCharacterBase;
 
         //private void Awake()
         //{
@@ -28,14 +28,24 @@ namespace HA
 
         
 
-        public void UseItem()
+        public bool UseItem()
         {
             if (statToChange == StatToChange.HEALTH)
             {
                 //PlayerController.Instance.PlayerCharacterBase.AddHP(amountToChangeStat);
                 //PlayerController.Instance.PlayerCharacterBase.currentHP += amountToChangeStat;
-                PlayerController.Instance.PlayerCharacterBase.IncreaseHP(amountToChangeStat);
+                if(characterBase.currentHP == characterBase.maxHP)
+                {
+                    return false;
+                }
+                else
+                {
+                    characterBase.IncreaseHP(amountToChangeStat);
+                    return true;
+                }
+                
             }
+            return false;
 
             if (statToChange == StatToChange.MANA)
             {
