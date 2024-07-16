@@ -24380,7 +24380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7380efa6d3dc7a439031de5654f90a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHP: 60
+  currentHP: 400
   maxHP: 400
   currentMP: 0
   maxMP: 0

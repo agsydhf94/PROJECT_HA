@@ -11,13 +11,13 @@ public class Item : MonoBehaviour, IInteractable
     public string itemName;
 
     [SerializeField]
-    private int quantity;
+    public int quantity;
 
     [SerializeField]
-    private Sprite itemImage;
+    public Sprite itemImage;
 
     [SerializeField]
-    private string itemDescription;
+    public string itemDescription;
 
     [TextArea]
 
