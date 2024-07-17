@@ -173,7 +173,9 @@ namespace HA
         private void Update()
         {
             Move();
-            moveSpeed = GameDataModel.Singleton.myDummyData.characterMoveSpeed;
+
+            // 이거 살아 있으면 캐릭터 안 움직임
+            // moveSpeed = GameDataModel.Singleton.myDummyData.characterMoveSpeed;
 
             // 상호작용 키
             if (Input.GetKeyDown(KeyCode.F))
