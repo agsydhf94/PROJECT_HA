@@ -162,6 +162,11 @@ namespace HA
         {
             // Cursor.lockState = CursorLockMode.Locked;
             // Cursor.visible = false;
+
+            // ¿Ã∑Ø∏È æ»µ 
+            // GameObject.Find("GameDataModel").GetComponent<GameDataModel>.myDummyData.characterMoveSpeed
+
+            moveSpeed = GameDataModel.Instance.myDummyData.characterMoveSpeed;
         }
 
         private void Update()
