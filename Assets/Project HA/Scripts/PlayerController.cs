@@ -166,12 +166,14 @@ namespace HA
             // 이러면 안됨
             // GameObject.Find("GameDataModel").GetComponent<GameDataModel>.myDummyData.characterMoveSpeed
 
-            moveSpeed = GameDataModel.Instance.myDummyData.characterMoveSpeed;
+            // moveSpeed = GameDataModel.Instance.myDummyData.characterMoveSpeed;
+            
         }
 
         private void Update()
         {
             Move();
+            moveSpeed = GameDataModel.Singleton.myDummyData.characterMoveSpeed;
 
             // 상호작용 키
             if (Input.GetKeyDown(KeyCode.F))

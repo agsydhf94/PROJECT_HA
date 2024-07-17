@@ -1,22 +1,15 @@
+using H;
+using HA;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameDataModel : MonoBehaviour
+public class GameDataModel : SingletonBase<GameDataModel>
 {
-    public static GameDataModel Instance;
+    
 
     public GameDataBase myDummyData;
 
-    private void Awake()
-    {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        Instance = null;
-    }
+   
 }
 
