@@ -128,9 +128,7 @@ namespace HA
                 {
                     itemDescriptionImage.sprite = emptySprite;
                 }
-            }
-
-            
+            }      
         }
 
         private void EmptySlot()

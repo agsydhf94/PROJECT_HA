@@ -47,11 +47,15 @@ namespace HA
             }
             return false;
 
+            
+
             if (statToChange == StatToChange.MANA)
             {
                 //PlayerController.Instance.PlayerCharacterBase.AddMP(amountToChangeStat);
                 PlayerController.Instance.PlayerCharacterBase.currentMP += amountToChangeStat;
             }
+
+            
         }
 
 
@@ -60,7 +64,8 @@ namespace HA
         {
             NONE,
             HEALTH,
-            MANA
+            MANA,
+            BULLET
         }
 
         public enum AttributesToChange
