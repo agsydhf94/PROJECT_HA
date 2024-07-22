@@ -75,8 +75,25 @@ public class SplashLogic : MonoBehaviour
     }
     */
 
+    /*
+    public void DetectObjectBySphereCasting()
+    {
+        detectedObjects.Clear();
+
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit[] hitObjects = Physics.SphereCastAll(ray, radius, distance);
+        if (hitObjects != null)
+        {
+            for (int i = 0; i < hitObjects.Length; i++)
+            {
+                detectedObjects.Add(hitObjects[i].transform.gameObject);
+            }
+        }
+    }
+    */
+
     [ContextMenu("Detect")]
-    public void DetectObjectsBySphereCasting()
+    public void ExplosionPhysics()
     {
         detectedObjects.Clear();
         Collider[] overlappedObjects = Physics.OverlapSphere(transform.position, radius);

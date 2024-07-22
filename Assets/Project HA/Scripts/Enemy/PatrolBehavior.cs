@@ -8,18 +8,24 @@ public class PatrolBehavior : StateMachineBehaviour
     float timer = 0;
     List<Transform> wayPoints = new List<Transform>();
     NavMeshAgent navMeshAgent;
-
+    private int lastSelectedIndex = -1;
     
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer = 0;
-        Transform wayPointsObject = GameObject.FindGameObjectWithTag("EnemyWaypoints").transform;
-        foreach (Transform wayPointElements in wayPointsObject)
+        GameObject[] wayPointsObject = GameObject.FindGameObjectsWithTag("EnemyWaypoints");
+        foreach (GameObject wayPointElements in wayPointsObject)
         {
-            wayPoints.Add(wayPointElements);
+            wayPoints.Add(wayPointElements.transform);
         }
         navMeshAgent = animator.GetComponent<NavMeshAgent>();
-        navMeshAgent.SetDestination(wayPoints[0].position);
+        int randomIndex = Random.Range(0, wayPoints.Count);
+        while (randomIndex == lastSelectedIndex)
+        {
+            randomIndex = Random.Range(0, wayPoints.Count);
+        }
+        lastSelectedIndex = randomIndex;
+        navMeshAgent.SetDestination(wayPoints[randomIndex].position);
     }
 
     
