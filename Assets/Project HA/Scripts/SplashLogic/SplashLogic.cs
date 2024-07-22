@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SplashLogic : MonoBehaviour
@@ -17,6 +18,7 @@ public class SplashLogic : MonoBehaviour
     public List<GameObject> detectedObjects = new List<GameObject>();
     public float radius = 3f;
     public float splashAngle = 70f;
+    public float distance = 10f;
 
 
 
@@ -42,7 +44,7 @@ public class SplashLogic : MonoBehaviour
     }
     */
 
-    
+    /*
     [ContextMenu("Detect")]
     public void DetectObjectBySector()
     {
@@ -71,8 +73,25 @@ public class SplashLogic : MonoBehaviour
             }
         }
     }
-    
+    */
 
-    
+    [ContextMenu("Detect")]
+    public void DetectObjectsBySphereCasting()
+    {
+        detectedObjects.Clear();
+
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit[] hitObjects = Physics.SphereCastAll(ray, radius, distance);
+        if (hitObjects != null)
+        {
+            for (int i = 0; i < hitObjects.Length; i++)
+            {
+                detectedObjects.Add(hitObjects[i].transform.gameObject);
+            }
+        }
+    }
+
+
+
 
 }
