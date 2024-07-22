@@ -1,20 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PatrolBehavior : StateMachineBehaviour
 {
     float timer = 0;
     List<Transform> wayPoints = new List<Transform>();
+    NavMeshAgent navMeshAgent;
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer = 0;
         Transform wayPointsObject = GameObject.FindGameObjectWithTag("EnemyWaypoints").transform;
+        foreach (Transform wayPointElements in wayPointsObject)
+        {
+            wayPoints.Add(wayPointElements);
+        }
+        navMeshAgent = animator.GetComponent<NavMeshAgent>();
+        navMeshAgent.SetDestination(wayPoints[0].position);
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer += Time.deltaTime;
