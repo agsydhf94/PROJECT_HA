@@ -16,8 +16,11 @@ public class SplashLogic : MonoBehaviour
 
     public List<GameObject> detectedObjects = new List<GameObject>();
     public float radius = 3f;
+    public float splashAngle = 70f;
 
-    [ContextMenu("Detect")]
+
+
+    /*
     public void DetectObjectsBySphere()
     {
         detectedObjects.Clear();
@@ -37,4 +40,39 @@ public class SplashLogic : MonoBehaviour
             
         }
     }
+    */
+
+    
+    [ContextMenu("Detect")]
+    public void DetectObjectBySector()
+    {
+        detectedObjects.Clear();
+        Collider[] overlappedObjects = Physics.OverlapSphere(transform.position, radius);
+        for (int i = 0; i < overlappedObjects.Length; i++)
+        {
+            // A의 Forward 벡터
+            Vector3 forwardA = transform.forward;
+
+            // A에서 B로 향하는 벡터
+            Vector3 directionToB = (overlappedObjects[i].transform.position - transform.position).normalized;
+
+            // 두 벡터 간의 각도 계산
+            float angle = Vector3.Angle(forwardA, directionToB);
+
+            // 각도가 60도 이내인지 확인
+            if (angle <= splashAngle)
+            {
+                Debug.Log("B는 A의 Forward 기준으로 60도 이내에 있습니다.");
+                detectedObjects.Add(overlappedObjects[i].gameObject);
+            }
+            else
+            {
+                Debug.Log("B는 A의 Forward 기준으로 60도 밖에 있습니다.");
+            }
+        }
+    }
+    
+
+    
+
 }
