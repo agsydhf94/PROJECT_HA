@@ -42,7 +42,7 @@ namespace HA
         {
             if(Time.time > shootConfig.fireRate + lastShootTime)
             {
-                lastShootTime = Time.time;    // Crutial Part!
+                lastShootTime = Time.time;    // 중요 부분
                 shootSystem.Play();
 
                 // Shooting Direction and Random Spreading
@@ -98,6 +98,11 @@ namespace HA
             }
 
             instance.transform.position = endPoint;
+
+            if(hit.collider != null)
+            {
+                SurfaceManager
+            }
 
             yield return new WaitForSeconds(trailConfig.duration);
             yield return null;
