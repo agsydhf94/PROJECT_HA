@@ -178,7 +178,7 @@ namespace HA
 
         private void PlayEffects(Vector3 HitPoint, Vector3 HitNormal, SurfaceEffectSO SurfaceEffect, float SoundOffset)
         {
-            foreach (SpawnObjectEffect spawnObjectEffect in SurfaceEffect.SpawnObjectEffects)
+            foreach (SpawnObjectEffectSO spawnObjectEffect in SurfaceEffect.SpawnObjectEffects)
             {
                 if (spawnObjectEffect.Probability > Random.value)
                 {
@@ -210,7 +210,7 @@ namespace HA
                 }
             }
 
-            foreach (PlayAudioEffect playAudioEffect in SurfaceEffect.PlayAudioEffects)
+            foreach (PlayAudioEffectSO playAudioEffect in SurfaceEffect.PlayAudioEffects)
             {
                 if (!ObjectPools.ContainsKey(playAudioEffect.AudioSourcePrefab.gameObject))
                 {
