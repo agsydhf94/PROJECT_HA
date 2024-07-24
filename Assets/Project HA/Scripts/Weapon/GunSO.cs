@@ -28,7 +28,7 @@ namespace HA
         {
             activeMonoBehavior = _activeMonoBehavior;
             lastShootTime = 0;  // 유니티 안에서 제대로 리셋되지 않을 때를 대비
-            trailConfig = new ObjectPool<TrailRenderer>(CreateTrail);
+            //trailConfig = new ObjectPool<TrailRenderer>(CreateTrail);
 
             model = Instantiate(modelPrefab);
             model.transform.SetParent(Parent, false);
@@ -67,11 +67,11 @@ namespace HA
                 }
                 else
                 {
-                    activeMonoBehavior.StartCoroutine(
+                    /*activeMonoBehavior.StartCoroutine(
                         PlayTrail(shootSystem.transform.position, 
                                   shootSystem.transform.position + (shootDirection * trailConfig.missDistance)
                                   )
-                        );
+                        );*/
                 }
 
             }
@@ -101,7 +101,7 @@ namespace HA
 
             if(hit.collider != null)
             {
-                SurfaceManager
+                // SurfaceManager
             }
 
             yield return new WaitForSeconds(trailConfig.duration);

@@ -3,46 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PatrolBehavior : StateMachineBehaviour
+namespace HA
 {
-    float timer = 0;
-    List<Transform> wayPoints = new List<Transform>();
-    NavMeshAgent navMeshAgent;
-    private int lastSelectedIndex = -1;
-    
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public class PatrolBehavior : StateMachineBehaviour
     {
-        timer = 0;
-        GameObject[] wayPointsObject = GameObject.FindGameObjectsWithTag("EnemyWaypoints");
-        foreach (GameObject wayPointElements in wayPointsObject)
-        {
-            wayPoints.Add(wayPointElements.transform);
-        }
-        navMeshAgent = animator.GetComponent<NavMeshAgent>();
-        int randomIndex = Random.Range(0, wayPoints.Count);
-        while (randomIndex == lastSelectedIndex)
-        {
-            randomIndex = Random.Range(0, wayPoints.Count);
-        }
-        lastSelectedIndex = randomIndex;
-        navMeshAgent.SetDestination(wayPoints[randomIndex].position);
-    }
+        float timer = 0;
+        List<Transform> wayPoints = new List<Transform>();
+        NavMeshAgent navMeshAgent;
+        private int lastSelectedIndex = -1;
 
-    
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        timer += Time.deltaTime;
-        if(timer > 10)
+        override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            animator.SetBool("isPatrolling", false);
+            timer = 0;
+            GameObject[] wayPointsObject = GameObject.FindGameObjectsWithTag("EnemyWaypoints");
+            foreach (GameObject wayPointElements in wayPointsObject)
+            {
+                wayPoints.Add(wayPointElements.transform);
+            }
+            navMeshAgent = animator.GetComponent<NavMeshAgent>();
+            int randomIndex = Random.Range(0, wayPoints.Count);
+            while (randomIndex == lastSelectedIndex)
+            {
+                randomIndex = Random.Range(0, wayPoints.Count);
+            }
+            lastSelectedIndex = randomIndex;
+            navMeshAgent.SetDestination(wayPoints[randomIndex].position);
         }
-    }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-    
-    }
 
-    
+        override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            timer += Time.deltaTime;
+            if (timer > 10)
+            {
+                animator.SetBool("isPatrolling", false);
+            }
+        }
+
+        // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+        override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+
+        }
+
+
+    }
 }
