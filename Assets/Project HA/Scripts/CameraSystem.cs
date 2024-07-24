@@ -10,8 +10,16 @@ public class CameraSystem : MonoBehaviour
 
 
     public Cinemachine.CinemachineVirtualCamera playerCamera;
+    public Cinemachine.CinemachineImpulseSource impulseSource;
 
     public float zoomSpeed = 5.0f;
+
+    public void ShakeCamera(Vector3 velocity, float duration, float force)
+    {
+        impulseSource.m_DefaultVelocity = velocity;
+        impulseSource.m_ImpulseDefinition.m_ImpulseDuration = duration;
+        impulseSource.GenerateImpulseWithForce(force);
+    }
 
     private void Awake()
     {

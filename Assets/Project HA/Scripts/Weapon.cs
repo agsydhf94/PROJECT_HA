@@ -34,6 +34,8 @@ namespace HA
         public float reloadTime;
         public bool isReload = false;
 
+        public List<Vector3> recoilShakePattern = new List<Vector3>();
+
         public int damagePoint;
 
         [Header("Magazine Status")]
@@ -52,7 +54,7 @@ namespace HA
 
 
 
-
+        private int currentRecoilIndex = 0;
         private float lastShootTime = 0f;
 
         private void Awake()
@@ -89,6 +91,14 @@ namespace HA
                 var newbulletCartridge = Instantiate(bulletCartridgePrefab);
                 newbulletCartridge.transform.SetPositionAndRotation(bulletCartRidgePosition.position, bulletCartRidgePosition.rotation);
                 newbulletCartridge.GetComponent<Rigidbody>().AddForce(Vector3.left);
+
+                Vector3 velocity = recoilShakePattern[currentRecoilIndex];
+                currentRecoilIndex++;
+                if(currentRecoilIndex >= recoilShakePattern.Count)
+                {
+                    currentRecoilIndex = currentRecoilIndex = 0;
+                }
+                CameraSystem.Instance.ShakeCamera(new Vector3(0,-1,0), 0.2f, 1f);
 
             }
         }
