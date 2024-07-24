@@ -98,7 +98,7 @@ namespace HA
                 {
                     currentRecoilIndex = currentRecoilIndex = 0;
                 }
-                CameraSystem.Instance.ShakeCamera(new Vector3(0,-1,0), 0.2f, 1f);
+                CameraSystem.Instance.ShakeCamera(velocity, 0.2f, 1f);
 
             }
         }
