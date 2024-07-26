@@ -70,7 +70,13 @@ namespace HA
         public LayerMask groundLayers;
         public float groundCheckRadius = 0.3f;
         public Vector3 groundCheckOffset;
-        
+        public float freefallTimeValue = 0f;
+
+
+        public float jumpForce = 5.0f;
+        public float jumpHeight = 1.0f;
+        public float jumpTimeDelta = 1f;
+
 
         public float moveSpeed = 3.0f;
         public float sprintSpeed = 5.0f;
@@ -87,7 +93,7 @@ namespace HA
         public GameObject scifiRifle_Dummy;
         public RigBuilder rigbuilder;
 
-        
+
 
 
 
@@ -112,11 +118,11 @@ namespace HA
             animator = GetComponentInChildren<Animator>();
             controller = GetComponent<CharacterController>();
             mainCamera = Camera.main;
-            
+
             var weaponGameObject = TransformUtility.FindGameObjectWithTag(weaponHolder, "Weapon");
             currentWeapon = weaponGameObject.gameObject.GetComponent<Weapon>();
 
-            
+
 
             scifiRifle_Dummy = GameObject.Find("ScifiRifleWLT78MasterPrefab_Dummy");
             rigbuilder = GetComponentInChildren<RigBuilder>();
@@ -132,7 +138,7 @@ namespace HA
 
         private void RifleHolsterTiming(string name)
         {
-            if(name.Equals("Holster_Rifle"))
+            if (name.Equals("Holster_Rifle"))
             {
                 currentWeapon.gameObject.SetActive(false);
                 scifiRifle_Dummy.gameObject.SetActive(true);
@@ -177,7 +183,7 @@ namespace HA
             // GameObject.Find("GameDataModel").GetComponent<GameDataModel>.myDummyData.characterMoveSpeed
 
             // moveSpeed = GameDataModel.Instance.myDummyData.characterMoveSpeed;
-            
+
         }
 
         private void Update()
@@ -205,6 +211,10 @@ namespace HA
             {
                 InteractionUI.Instance.SelectPrev();
             }
+
+
+
+            // 캐릭터 조작 관련 인풋
 
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -240,11 +250,11 @@ namespace HA
             animator.SetFloat("Vertical", move.y);
             animator.SetFloat("Strafe", isStrafe ? 1 : 0);
 
-            
+
 
             // 왼쪽 시프트키 눌렀을 때, 애니메이션 속도 증가
             // GetKey : 누르는 동안 true
-            if(Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 animator.SetFloat("DashSpeedMultiplier", dashSpeedDeltaMultiplier);
             }
@@ -253,14 +263,20 @@ namespace HA
                 animator.SetFloat("DashSpeedMultiplier", 1f);
             }
 
-
+            // 점프
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
+                animator.SetTrigger("Jump");
+                Jump();
+                // verticalVelocity = Mathf.Sqrt(this.jumpHeight * 9.81f);
+            }
 
             // 무장 상태일 때만 총이 보임
             // scifiRifle.SetActive(isArmed);
 
             // 무장 상태 진입 후, Draw Rifle 애니메이션이 끝나면 Grip Ready 리깅 개시
             /*rigbuilder.enabled = animator.GetBool("Ready_Rifle");
-             */ 
+             */
 
             /* 사격 상태일 때만 에임 관련 리깅이 작동함
             int rifle_fire = animator.GetInteger("Rifle_Fire");
@@ -277,7 +293,7 @@ namespace HA
                 //currentWeapon.gameObject.SetActive(true);
 
             }
-            else if(Input.GetKeyDown(KeyCode.U) && isArmed)
+            else if (Input.GetKeyDown(KeyCode.U) && isArmed)
             {
                 isArmed = false;
                 animator.SetBool("isArmed", false);
@@ -303,14 +319,15 @@ namespace HA
 
 
                 if (Input.GetKey(KeyCode.Mouse0) && !currentWeapon.isReload)
-                {   
-                    if (currentWeapon.currentBulletCount > 0 )
+                {
+                    if (currentWeapon.currentBulletCount > 0)
                     {
                         animator.SetInteger("Rifle_Fire", 1);
                         currentWeapon?.Shoot(); // 슈팅 로직
+                        animator.SetTrigger("Rifle_Shoot");
                         rifleHoldingTimer = 0.5f;
                     }
-                    
+
 
                     var cameraForward = Camera.main.transform.forward.normalized;
                     cameraForward.y = 0;
@@ -338,9 +355,9 @@ namespace HA
             // isWalk = isMove || isSprint;
             // animator.SetBool("RifleFire_Idle_Exit", isMove || rifleHoldingTimer < 0);
 
-            
 
-            
+
+
 
             // 마우스 우클릭을 하고 있으면 줌인하기
             if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -357,28 +374,56 @@ namespace HA
                 CameraSystem.Instance.TargetFOV = defaultFOV;
             }
 
-            
-
 
 
         }
+
+        // -------------------------------------------------------------------------------------------------------------------------
+
+
+
+        public void Jump()
+        {
+            verticalVelocity = jumpForce;
+            jumpTimeDelta = 0.3f;
+        }
+
         private void GroundCheck()
         {
             Ray ray = new Ray(transform.position + groundCheckOffset, Vector3.down);
             isGrounded = Physics.SphereCast(ray, groundCheckRadius, 0.1f, groundLayers);
+
+            if (!isGrounded)
+            {
+                freefallTimeValue += Time.deltaTime;
+            }
+            else
+            {
+                freefallTimeValue = 0f;
+            }
         }
 
         private void FreeFall()
         {
-            if (isGrounded)
+            if (jumpTimeDelta > 0f)
             {
-                verticalVelocity = 0f;
+                jumpTimeDelta -= Time.deltaTime;
             }
-            else
+
+            if (jumpTimeDelta <= 0f)
             {
-                verticalVelocity = -9.81f;
+                if (isGrounded)
+                {
+                    verticalVelocity = 0f;
+                }
+                else
+                {
+                    verticalVelocity = -9.81f * freefallTimeValue;
+                }
             }
         }
+
+
 
         private void Move()
         {
@@ -443,15 +488,28 @@ namespace HA
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
 
+
+
+
             // move the player
             controller.Move(targetDirection.normalized * (speed * Time.deltaTime) +
                              new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
         }
 
+
+
+
+
+
+
+
+
         private void LateUpdate()
         {
             CameraRotation();
         }
+
+
 
         private void CameraRotation()
         {
