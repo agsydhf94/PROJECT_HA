@@ -67,4 +67,5 @@ namespace HA
             OnChangedHP?.Invoke(currentHP, maxHP);
         }
     }
+
 }

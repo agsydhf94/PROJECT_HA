@@ -30,21 +30,35 @@ namespace HA
 
         public bool UseItem()
         {
+            switch(statToChange)
+            {
+                case StatToChange.HEALTH:
+                    {
+                        if (characterBase.currentHP == characterBase.maxHP)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            characterBase.IncreaseHP(amountToChangeStat);
+                            return true;
+                        }
+                    }
+                case StatToChange.BULLET:
+                    {
+                        
+                    }
+                    break;
+            }
+            /*
             if (statToChange == StatToChange.HEALTH)
             {
                 //PlayerController.Instance.PlayerCharacterBase.AddHP(amountToChangeStat);
                 //PlayerController.Instance.PlayerCharacterBase.currentHP += amountToChangeStat;
-                if(characterBase.currentHP == characterBase.maxHP)
-                {
-                    return false;
-                }
-                else
-                {
-                    characterBase.IncreaseHP(amountToChangeStat);
-                    return true;
-                }
+                
                 
             }
+            */
             return false;
 
             
