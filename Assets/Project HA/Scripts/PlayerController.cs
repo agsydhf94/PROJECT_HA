@@ -12,6 +12,12 @@ namespace HA
         public static PlayerController Instance { get; private set; } = null;
 
 
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position + groundCheckOffset, groundCheckRadius);
+        }
+
         //public CharacterBase PlayerCharacterBase { get { return characterBase; } }
         public CharacterBase PlayerCharacterBase => characterBase;
 
@@ -61,7 +67,9 @@ namespace HA
         private float verticalVelocity;
 
 
-        
+        public LayerMask groundLayers;
+        public float groundCheckRadius = 0.3f;
+        public Vector3 groundCheckOffset;
         
 
         public float moveSpeed = 3.0f;
@@ -84,6 +92,8 @@ namespace HA
 
 
         private bool isEnablemovement = true;
+        private bool isGrounded = false;
+
         public bool IsEnableMovemnt
         {
             set => isEnablemovement = value;
@@ -172,8 +182,6 @@ namespace HA
 
         private void Update()
         {
-            Move();
-
             // 이거 살아 있으면 캐릭터 안 움직임
             // moveSpeed = GameDataModel.Singleton.myDummyData.characterMoveSpeed;
 
@@ -202,13 +210,6 @@ namespace HA
             float vertical = Input.GetAxis("Vertical");
             move = new Vector2(horizontal, vertical);
 
-            animator.SetBool("IsMoving", move.magnitude != 0);
-
-            /*if(interactionSensor.HasInteractable)
-            {
-                move = Vector2.zero;
-            }*/
-
             float hMouse = Input.GetAxis("Mouse X");
             float vMouse = Input.GetAxis("Mouse Y") * (-1);
             look = new Vector2(hMouse, vMouse);
@@ -223,9 +224,17 @@ namespace HA
                 transform.forward = cameraForward;
             }
 
+            GroundCheck();
+            FreeFall();
+            Move();
 
+            /*if(interactionSensor.HasInteractable)
+            {
+                move = Vector2.zero;
+            }*/
 
             // 애니메이션 컨트롤
+            animator.SetBool("IsMoving", move.magnitude != 0);
             animator.SetFloat("Speed", animationBlend);
             animator.SetFloat("Horizontal", move.x);
             animator.SetFloat("Vertical", move.y);
@@ -352,6 +361,23 @@ namespace HA
 
 
 
+        }
+        private void GroundCheck()
+        {
+            Ray ray = new Ray(transform.position + groundCheckOffset, Vector3.down);
+            isGrounded = Physics.SphereCast(ray, groundCheckRadius, 0.1f, groundLayers);
+        }
+
+        private void FreeFall()
+        {
+            if (isGrounded)
+            {
+                verticalVelocity = 0f;
+            }
+            else
+            {
+                verticalVelocity = -9.81f;
+            }
         }
 
         private void Move()
