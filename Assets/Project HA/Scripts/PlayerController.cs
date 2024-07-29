@@ -58,6 +58,7 @@ namespace HA
         public bool isWalk = false;
         public bool isClosedAim = false;
         public bool isShooting = false;
+        public bool isReloading = false;
         private Vector2 move;
         private float speed;
         private float animationBlend;
@@ -127,7 +128,8 @@ namespace HA
 
             scifiRifle_Dummy = GameObject.Find("ScifiRifleWLT78MasterPrefab_Dummy");
 
-            interactionSensor = GameObject.Find("Interaction Sensor").GetComponent<InteractionSensor>();
+            // interactionSensor = GameObject.Find("Interaction Sensor").GetComponent<InteractionSensor>();
+            interactionSensor = InteractionSensor.Instance;
 
         }
 
@@ -312,7 +314,9 @@ namespace HA
                 if (Input.GetKeyDown(KeyCode.R) && !currentWeapon.isReload &&
                         currentWeapon.currentBulletCount < currentWeapon.reloadBulletCount)
                 {
-                    currentWeapon.StartCoroutine(currentWeapon.ReloadCoroutine());
+                    isReloading = true;
+
+                    //currentWeapon.StartCoroutine(currentWeapon.ReloadCoroutine());
                     animator.SetTrigger("Reload");
                 }
 
@@ -320,7 +324,7 @@ namespace HA
 
                 if (Input.GetKey(KeyCode.Mouse0) && !currentWeapon.isReload)
                 {
-                    if (currentWeapon.currentBulletCount > 0)
+                    if (currentWeapon.currentBulletCount > 0 && !isReloading)
                     {
                         animator.SetInteger("Rifle_Fire", 1);
                         currentWeapon?.Shoot(); // ½´ÆÃ ·ÎÁ÷
@@ -539,9 +543,11 @@ namespace HA
             return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
 
-
-
-
+        public void ReloadFinished()
+        {
+            isReloading = false;
+            currentWeapon.Reload();
+        }
     }
 }
 

@@ -7,7 +7,8 @@ namespace HA
 {
     public class InteractionSensor : MonoBehaviour
     {
-        
+        public static InteractionSensor Instance;
+
         public List<IInteractable> interactables = new List<IInteractable>();
         public bool HasInteractable => interactables.Count > 0;
 

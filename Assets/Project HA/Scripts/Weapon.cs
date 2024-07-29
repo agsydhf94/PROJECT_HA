@@ -103,17 +103,33 @@ namespace HA
             }
         }
 
+        public void Reload()
+        {
+            if (carryBulletCount > 0)
+            {
+                carryBulletCount += currentBulletCount;
+                currentBulletCount = 0;
+
+                if (carryBulletCount >= reloadBulletCount) // 한 번 장전 가능한 충분한 탄을 소유하고 있다면
+                {
+                    currentBulletCount = reloadBulletCount; // 정상 장전
+                    carryBulletCount -= reloadBulletCount; // 장전한 탄 수만큼 소유분에서 차감
+                }
+                else // 장전 하는데 충분한 탄약이 없다면 ( ex-> 30발 장전해야 하는데 가진건 20발 뿐일 때 )
+                {
+                    currentBulletCount = carryBulletCount;
+                    carryBulletCount = 0;
+                }
+            }
+        }
+
         public IEnumerator ReloadCoroutine()
         {
             if (carryBulletCount > 0)
             {
                 isReload = true;
-
-
                 carryBulletCount += currentBulletCount;
                 currentBulletCount = 0;
-
-
 
                 yield return new WaitForSeconds(reloadTime);
 

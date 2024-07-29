@@ -8,23 +8,17 @@ using UnityEngine.Animations.Rigging;
 
 public class AnimationRigController_RifleOff : StateMachineBehaviour
 {
-    public GameObject Rifle;
     public PlayerController playerController;
-    public Animator animator;
 
     private void Awake()
-    {
-        // Rifle = GameObject.Find("ScifiRifleWLT78Receiver");
-        
+    {        
         // animator = GameObject.Find("FreeTestCharacterAsuna").GetComponent<Animator>();
         // playerController = GameObject.Find("HA.Character.Player").GetComponent<PlayerController>();
-
-        playerController = PlayerController.Instance;
-        animator = PlayerController.Instance.GetComponent<Animator>();
     }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        playerController = PlayerController.Instance;
         playerController.IsEnableMovemnt = false;
     }
 
