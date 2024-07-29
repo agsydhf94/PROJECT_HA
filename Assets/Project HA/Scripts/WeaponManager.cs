@@ -23,7 +23,7 @@ namespace HA
 
         private GunController gunController;
         public GameObject weaponHolder;
-        public static Transform currentWeapon;
+        public static Weapon currentWeapon;
 
         void Awake()
         {
