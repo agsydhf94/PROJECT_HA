@@ -178,8 +178,8 @@ namespace HA
 
         private void Start()
         {
-            // Cursor.lockState = CursorLockMode.Locked;
-            // Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
             // 이러면 안됨
             // GameObject.Find("GameDataModel").GetComponent<GameDataModel>.myDummyData.characterMoveSpeed
@@ -304,6 +304,15 @@ namespace HA
             }
 
             isShooting = Input.GetKey(KeyCode.Mouse0) && currentWeapon.currentBulletCount > 0;
+
+
+            // 수류탄 던지기
+            if(Input.GetKeyDown(KeyCode.Mouse2))
+            {
+                animator.SetTrigger("Grenade");
+            }
+
+
 
 
             if (isArmed)

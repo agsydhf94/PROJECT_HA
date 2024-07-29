@@ -123,6 +123,7 @@ namespace HA
             }
         }
 
+        /*
         public IEnumerator ReloadCoroutine()
         {
             if (carryBulletCount > 0)
@@ -147,6 +148,7 @@ namespace HA
                 isReload = false;
             }
         }
+        */
 
         public void CancelReload()
         {
