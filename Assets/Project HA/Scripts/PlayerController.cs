@@ -119,13 +119,13 @@ namespace HA
             controller = GetComponent<CharacterController>();
             mainCamera = Camera.main;
 
+
             var weaponGameObject = TransformUtility.FindGameObjectWithTag(weaponHolder, "Weapon");
             currentWeapon = weaponGameObject.gameObject.GetComponent<Weapon>();
 
 
 
             scifiRifle_Dummy = GameObject.Find("ScifiRifleWLT78MasterPrefab_Dummy");
-            rigbuilder = GetComponentInChildren<RigBuilder>();
 
             interactionSensor = GameObject.Find("Interaction Sensor").GetComponent<InteractionSensor>();
 
