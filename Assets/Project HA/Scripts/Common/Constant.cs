@@ -16,4 +16,5 @@ namespace HA
         POTION = 3,
         MISC = 4,
     }
+
 }

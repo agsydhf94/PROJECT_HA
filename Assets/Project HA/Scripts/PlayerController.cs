@@ -156,6 +156,14 @@ namespace HA
             }
         }
 
+        private void GrenadeThrow(string eventName)
+        {
+            if(eventName.Equals("Grenade_Throw"))
+            {
+
+            }
+        }
+
         // 상호작용
 
         private void OnEnable()
