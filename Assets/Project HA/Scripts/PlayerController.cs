@@ -111,9 +111,13 @@ namespace HA
         {
             Instance = this;
 
+
+            // 애니메이션 타이밍 관련 델리게이트
             animationEventListener = GetComponentInChildren<AnimationEventListener>();
             animationEventListener.OnTakeAnimationEvent += RifleDrawTiming;
             animationEventListener.OnTakeAnimationEvent += RifleHolsterTiming;
+
+
 
             characterBase = GetComponent<CharacterBase>();
             animator = GetComponentInChildren<Animator>();
