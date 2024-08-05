@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager Instance;
+
     public GameObject InventoryMenu;
     public bool menuActivated;
     public ItemSlot[] itemSlot;
