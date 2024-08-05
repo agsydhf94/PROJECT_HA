@@ -53,6 +53,9 @@ namespace HA
         private Camera mainCamera;
         private CharacterController controller;
         private Animator animator;
+
+
+
         public bool isMove;
         public bool isSprint = false;
         public bool isWalk = false;
@@ -118,29 +121,33 @@ namespace HA
             animationEventListener.OnTakeAnimationEvent += RifleHolsterTiming;
 
 
-
+            // 컴포넌트 
             characterBase = GetComponent<CharacterBase>();
             animator = GetComponentInChildren<Animator>();
             controller = GetComponent<CharacterController>();
             mainCamera = Camera.main;
 
 
+            // 현재 장착된 무기 -> 개선 필요(?)
             var weaponGameObject = TransformUtility.FindGameObjectWithTag(weaponHolder, "Weapon");
             currentWeapon = weaponGameObject.gameObject.GetComponent<Weapon>();
 
 
-
+            // 아바타
             scifiRifle_Dummy = GameObject.Find("ScifiRifleWLT78MasterPrefab_Dummy");
 
-            // interactionSensor = GameObject.Find("Interaction Sensor").GetComponent<InteractionSensor>();
+
+            // 플레이어용 상호작용 센서
             interactionSensor = InteractionSensor.Instance;
 
         }
+
 
         private void OnDestroy()
         {
             Instance = null;
         }
+
 
         private void RifleHolsterTiming(string name)
         {
@@ -168,8 +175,8 @@ namespace HA
             }
         }
 
+        
         // 상호작용
-
         private void OnEnable()
         {
             interactionSensor.OnDetected += OnDetectedInteraction;
@@ -186,7 +193,7 @@ namespace HA
             InteractionUI.Instance.AddInteractionData(interactable);
         }
 
-        // 상호작용
+        
 
         private void Start()
         {

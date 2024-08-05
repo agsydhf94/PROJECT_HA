@@ -19,13 +19,15 @@ namespace HA
             Gizmos.DrawLine(Camera.main.transform.position, Camera.main.transform.position + Camera.main.transform.forward * range);
         }
 
-        public GameObject bulletPrefab;
-        public GameObject muzzlePrefab;
-        public GameObject bulletCartridgePrefab;
-        public Transform firePosition;
-        public Transform bulletCartRidgePosition;
-        public GunController gunController;
-        public CrossHair crosshair;
+
+        public enum WeaponCategory
+        {
+            Rifle,
+            Pistol,
+            Bomb
+        }
+
+
 
         public string gunName;
         public float range = 100f;
@@ -47,7 +49,14 @@ namespace HA
         public float retroActionForce; // 총기 반동세기
         public float retroActionFineSightForce; // 정조준 시 반동세기
 
+        
+        public GameObject bulletPrefab;
+        public Transform firePosition;
+        public GameObject bulletCartridgePrefab;
+        public Transform bulletCartRidgePosition;
+        public GameObject muzzlePrefab;
         public AudioClip fire_Sound;
+        public CrossHair crosshair;
 
 
 
@@ -59,7 +68,6 @@ namespace HA
 
         private void Awake()
         {
-            gunController = GameObject.Find("WeaponHolder").GetComponent<GunController>();
             crosshair = FindObjectOfType<CrossHair>();
         }
 
@@ -70,7 +78,7 @@ namespace HA
             {
                 // 슈팅 가능
                 lastShootTime = Time.time;
-                gunController.PlaySE(fire_Sound);
+                PlaySE(fire_Sound);
                 crosshair.FireAnimation();
                 currentBulletCount--;
 
@@ -92,6 +100,8 @@ namespace HA
                 newbulletCartridge.transform.SetPositionAndRotation(bulletCartRidgePosition.position, bulletCartRidgePosition.rotation);
                 newbulletCartridge.GetComponent<Rigidbody>().AddForce(Vector3.left);
 
+                
+                // 총기 반동 패턴
                 Vector3 velocity = recoilShakePattern[currentRecoilIndex];
                 currentRecoilIndex++;
                 if(currentRecoilIndex >= recoilShakePattern.Count)
@@ -157,6 +167,13 @@ namespace HA
                 StopAllCoroutines();
                 isReload = false;
             }
+        }
+
+
+        public void PlaySE(AudioClip _clip)
+        {
+            audioSource.clip = _clip;
+            audioSource.Play();
         }
     }
 }
