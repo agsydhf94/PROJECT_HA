@@ -1731,7 +1731,7 @@ PrefabInstance:
     - target: {fileID: 9590100, guid: 7dc923b4c4812f147ba42a507e5507bd, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 2ee03e8cfdb3a344bb7ff8a575ba156b, type: 2}
+      objectReference: {fileID: 9100000, guid: 76f78a12e39328a4e87db58e39192bf1, type: 2}
     m_RemovedComponents:
     - {fileID: 11415292, guid: 7dc923b4c4812f147ba42a507e5507bd, type: 3}
     m_RemovedGameObjects: []
@@ -2320,6 +2320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 76854615}
+  impulseSource: {fileID: 0}
   zoomSpeed: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

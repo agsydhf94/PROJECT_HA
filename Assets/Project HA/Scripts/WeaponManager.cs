@@ -8,6 +8,7 @@ namespace HA
 {
     public class WeaponManager : MonoBehaviour
     {
-        
+
 
     }
+}

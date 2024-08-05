@@ -56,6 +56,7 @@ namespace HA
         public Transform bulletCartRidgePosition;
         public GameObject muzzlePrefab;
         public AudioClip fire_Sound;
+        private AudioSource audioSource;
         public CrossHair crosshair;
 
 
