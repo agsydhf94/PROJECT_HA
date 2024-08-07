@@ -23,7 +23,7 @@ public class Item : MonoBehaviour, IInteractable
 
     private InventoryManager inventoryManager;
 
-    public string Key => "";
+    public string Key => gameObject.name;
 
     public string Message => $"{itemName}";
 

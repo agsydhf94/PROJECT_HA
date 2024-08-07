@@ -138,7 +138,7 @@ namespace HA
 
 
             // 플레이어용 상호작용 센서
-            interactionSensor = InteractionSensor.Instance;
+            interactionSensor = GetComponentInChildren<InteractionSensor>();
 
         }
 

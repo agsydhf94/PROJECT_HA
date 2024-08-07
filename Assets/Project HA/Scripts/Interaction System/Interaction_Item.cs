@@ -10,10 +10,13 @@ namespace HA
 
          public InventoryItem inventoryItem_copy;
 
+        [SerializeField]
+        private string itemName;
+
 
         public string Key => "ItemBox." + gameObject.GetHashCode();
 
-        public string Message => "Pick Up";
+        public string Message => $"{itemName}";
 
         public virtual void Interact()
         {

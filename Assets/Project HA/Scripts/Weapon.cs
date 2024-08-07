@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,7 +48,7 @@ namespace HA
         public float retroActionForce; // 총기 반동세기
         public float retroActionFineSightForce; // 정조준 시 반동세기
 
-        
+
         public GameObject bulletPrefab;
         public Transform firePosition;
         public GameObject bulletCartridgePrefab;
@@ -101,11 +100,11 @@ namespace HA
                 newbulletCartridge.transform.SetPositionAndRotation(bulletCartRidgePosition.position, bulletCartRidgePosition.rotation);
                 newbulletCartridge.GetComponent<Rigidbody>().AddForce(Vector3.left);
 
-                
+
                 // 총기 반동 패턴
                 Vector3 velocity = recoilShakePattern[currentRecoilIndex];
                 currentRecoilIndex++;
-                if(currentRecoilIndex >= recoilShakePattern.Count)
+                if (currentRecoilIndex >= recoilShakePattern.Count)
                 {
                     currentRecoilIndex = currentRecoilIndex = 0;
                 }

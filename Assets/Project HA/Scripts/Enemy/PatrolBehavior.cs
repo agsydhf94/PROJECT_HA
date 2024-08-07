@@ -28,7 +28,7 @@ namespace HA
             }
             navMeshAgent = animator.GetComponent<NavMeshAgent>();
 
-            playerCharacter = GameObject.FindGameObjectWithTag("Character").transform;
+            playerCharacter = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
 
