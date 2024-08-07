@@ -32,7 +32,8 @@ public class Item : MonoBehaviour, IInteractable
     private void Awake()
     {
         // inventoryManager = GameObject.Find("HA.InventoryUI").GetComponent<InventoryManager>();
-        inventoryManager = InventoryManager.Instance;
+        // inventoryManager = InventoryManager.Instance;
+        inventoryManager = GameObject.FindGameObjectWithTag("InventoryUI").GetComponent<InventoryManager>();
     }
 
     public void Interact()

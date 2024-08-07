@@ -69,6 +69,7 @@ namespace HA
         private void Awake()
         {
             crosshair = FindObjectOfType<CrossHair>();
+            audioSource = GetComponent<AudioSource>();
         }
 
 

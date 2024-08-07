@@ -8,11 +8,19 @@ namespace HA
 {
     public class InteractionUI_ListItem : MonoBehaviour
     {
+        
+        public GameObject selection;
+        public TMPro.TextMeshProUGUI text;
+
+        private IInteractable interactionData;
+        private string key;
+
+
 
         public string DataKey
         {
-            set => key = value;
             get => key;
+            set => key = value;
         }
 
         public string Message
@@ -27,16 +35,11 @@ namespace HA
 
         public IInteractable InteractionData
         {
-            set => interactionData = value;
             get => interactionData;
+            set => interactionData = value;
         }
 
 
 
-        public GameObject selection;
-        public TMPro.TextMeshProUGUI text;
-
-        private IInteractable interactionData;
-        private string key;
     }
 }
