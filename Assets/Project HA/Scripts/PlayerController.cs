@@ -340,7 +340,7 @@ namespace HA
 
                 // 재장전 로직
                 if (Input.GetKeyDown(KeyCode.R) && !currentWeapon.isReload &&
-                        currentWeapon.currentBulletCount < currentWeapon.reloadBulletCount)
+                        currentWeapon.currentBulletCount < currentWeapon.reloadBulletCount && currentWeapon.carryBulletCount != 0)
                 {
                     isReloading = true;
 

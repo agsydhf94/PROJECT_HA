@@ -97,7 +97,7 @@ namespace HA
                 // ÅºÇÇ »ý¼º
 
                 Quaternion randomQua = new Quaternion(Random.Range(0, 360.0f), Random.Range(0, 360.0f), Random.Range(0, 360.0f), 1);
-                GameObject bulletCasing = Instantiate(bulletCasingPrefab, bulletCasingPosition);
+                GameObject bulletCasing = Instantiate(bulletCasingPrefab);
                 bulletCasing.transform.localRotation = randomQua;
                 bulletCasing.GetComponent<Rigidbody>().AddRelativeForce(
                     new Vector3(Random.Range(50.0f, 100.0f), Random.Range(50.0f, 100.0f), Random.Range(-40.0f, 40.0f)));

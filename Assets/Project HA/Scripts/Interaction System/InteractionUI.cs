@@ -34,7 +34,16 @@ namespace HA
             newListItem.DataKey = interactableData.Key;
             newListItem.Message = interactableData.Message;
             newListItem.InteractionData = interactableData;
-            newListItem.IsSelected = false;
+            //newListItem.IsSelected = false;
+
+            if(createdItems.Count == 0)
+            {
+                newListItem.IsSelected = true;
+            }
+            else
+            {
+                newListItem.IsSelected = false;
+            }
 
             createdItems.Add(newListItem);
         }
@@ -69,7 +78,7 @@ namespace HA
         {
             if (createdItems.Count > 0)
             {
-                if (selectedIndex > 0 && selectedIndex < createdItems.Count)
+                if (selectedIndex >= 0 && selectedIndex < createdItems.Count)
                 {
                     createdItems[selectedIndex].IsSelected = false;
                 }
