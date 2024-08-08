@@ -49,7 +49,7 @@ namespace HA
             timer += Time.deltaTime;
             if (timer > 10)
             {
-                animator.SetBool("isPatrolling", false);
+                animator.SetBool("isPatrolling", false);               
             }
 
 
