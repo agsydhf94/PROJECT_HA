@@ -9,6 +9,7 @@ TagManager:
   - Item
   - UI
   - EnemyWaypoints
+  - InventoryUI
   layers:
   - Default
   - TransparentFX

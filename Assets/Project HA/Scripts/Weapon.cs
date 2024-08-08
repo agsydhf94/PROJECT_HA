@@ -31,7 +31,6 @@ namespace HA
         public string gunName;
         public float range = 100f;
         public float fireRate = 0.1f;
-        public float accuracy;
         public float reloadTime;
         public bool isReload = false;
 
@@ -51,8 +50,8 @@ namespace HA
 
         public GameObject bulletPrefab;
         public Transform firePosition;
-        public GameObject bulletCartridgePrefab;
-        public Transform bulletCartRidgePosition;
+        public GameObject bulletCasingPrefab;
+        public Transform bulletCasingPosition;
         public GameObject muzzlePrefab;
         public AudioClip fire_Sound;
         private AudioSource audioSource;
@@ -97,10 +96,12 @@ namespace HA
 
                 // ÅºÇÇ »ý¼º
 
-                var newbulletCartridge = Instantiate(bulletCartridgePrefab);
-                newbulletCartridge.transform.SetPositionAndRotation(bulletCartRidgePosition.position, bulletCartRidgePosition.rotation);
-                newbulletCartridge.GetComponent<Rigidbody>().AddForce(Vector3.left);
-
+                Quaternion randomQua = new Quaternion(Random.Range(0, 360.0f), Random.Range(0, 360.0f), Random.Range(0, 360.0f), 1);
+                GameObject bulletCasing = Instantiate(bulletCasingPrefab, bulletCasingPosition);
+                bulletCasing.transform.localRotation = randomQua;
+                bulletCasing.GetComponent<Rigidbody>().AddRelativeForce(
+                    new Vector3(Random.Range(50.0f, 100.0f), Random.Range(50.0f, 100.0f), Random.Range(-40.0f, 40.0f)));
+                Destroy(bulletCasing, 1.0f);
 
                 // ÃÑ±â ¹Ýµ¿ ÆÐÅÏ
                 Vector3 velocity = recoilShakePattern[currentRecoilIndex];
