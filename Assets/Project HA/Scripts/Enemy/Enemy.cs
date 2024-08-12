@@ -7,8 +7,11 @@ public class Enemy : MonoBehaviour, IDamagable
 {
     public float enemyHp = 100.0f;
     public bool isDead = false;
-    
 
+    public GameObject projectile;
+    public Transform projectilePoint;
+    public float bulletPower = 300f;
+    
 
 
     private void Update()
@@ -22,6 +25,12 @@ public class Enemy : MonoBehaviour, IDamagable
             isDead = true;
             gameObject.SetActive(!isDead);
         }
+    }
+
+    public void Shoot()
+    {
+        Rigidbody rb = Instantiate(projectile, projectilePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * bulletPower, ForceMode.Impulse);
     }
 
        

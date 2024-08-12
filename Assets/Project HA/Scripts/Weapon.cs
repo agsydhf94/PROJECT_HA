@@ -91,7 +91,7 @@ namespace HA
                 // 醚舅 积己窍扁
                 var newBullet = Instantiate(bulletPrefab);
                 var cameraTransform = Camera.main.transform;
-                newBullet.transform.SetPositionAndRotation(cameraTransform.position, cameraTransform.rotation);
+                newBullet.transform.SetPositionAndRotation(firePosition.position, firePosition.rotation);
                 newBullet.gameObject.SetActive(true);
 
                 // 藕乔 积己
@@ -99,6 +99,7 @@ namespace HA
                 Quaternion randomQua = new Quaternion(Random.Range(0, 360.0f), Random.Range(0, 360.0f), Random.Range(0, 360.0f), 1);
                 GameObject bulletCasing = Instantiate(bulletCasingPrefab);
                 bulletCasing.transform.localRotation = randomQua;
+                bulletCasing.transform.localPosition = bulletCasingPosition.position;
                 bulletCasing.GetComponent<Rigidbody>().AddRelativeForce(
                     new Vector3(Random.Range(50.0f, 100.0f), Random.Range(50.0f, 100.0f), Random.Range(-40.0f, 40.0f)));
                 Destroy(bulletCasing, 1.0f);

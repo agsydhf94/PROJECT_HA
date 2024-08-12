@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.Animations;
-using UnityEngine.Animations.Rigging;
+// using UnityEngine.Animations.Rigging;
 
 public class AnimationRigController_RifleOff : StateMachineBehaviour
 {

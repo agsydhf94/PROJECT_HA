@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
+// using UnityEngine.Animations.Rigging;
 using UnityEngine.Scripting.APIUpdating;
 
 namespace HA
@@ -33,6 +33,12 @@ namespace HA
         private float cinemachineTargetYaw;
         private float cinemachineTargetPitch;
 
+        
+        [Header("Player Aiming")]
+        public Transform aimPos;
+        public float aimSmoothSpeed = 20f;
+        public LayerMask aimMask;
+        
 
         [Header("Camera Setting")]
         public float cameraHorizontalSpeed = 2.0f;
@@ -95,7 +101,7 @@ namespace HA
         public GameObject weaponHolder;
         public Weapon currentWeapon;
         public GameObject scifiRifle_Dummy;
-        public RigBuilder rigbuilder;
+        // public RigBuilder rigbuilder;
 
 
 
@@ -233,6 +239,16 @@ namespace HA
                 InteractionUI.Instance.SelectPrev();
             }
 
+            // 캐릭터 조준 관련 인풋
+            Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+            Ray ray = Camera.main.ScreenPointToRay(screenCenter);
+
+            if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask))
+            {
+                aimPos.position = Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
+            }
+            
+
 
 
             // 캐릭터 조작 관련 인풋
@@ -292,6 +308,8 @@ namespace HA
                 // verticalVelocity = Mathf.Sqrt(this.jumpHeight * 9.81f);
             }
 
+
+
             // 무장 상태일 때만 총이 보임
             // scifiRifle.SetActive(isArmed);
 
@@ -337,6 +355,7 @@ namespace HA
             if (isArmed)
             {
                 animator.SetTrigger("Armed_Rifle");
+                Debug.Log("iaA");
 
                 // 재장전 로직
                 if (Input.GetKeyDown(KeyCode.R) && !currentWeapon.isReload &&
