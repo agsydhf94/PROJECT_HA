@@ -11,8 +11,13 @@ public class Enemy : MonoBehaviour, IDamagable
     public GameObject projectile;
     public Transform projectilePoint;
     public float bulletPower = 300f;
-    
 
+    public RagdollController ragdollController;
+
+    private void Awake()
+    {
+        ragdollController = GetComponent<RagdollController>();
+    }
 
     private void Update()
     {
@@ -23,6 +28,7 @@ public class Enemy : MonoBehaviour, IDamagable
         else
         {
             isDead = true;
+            // ragdollController.ActiveRagdoll();
             gameObject.SetActive(!isDead);
         }
     }

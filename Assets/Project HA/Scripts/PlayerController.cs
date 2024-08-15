@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// using UnityEngine.Animations.Rigging;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.Scripting.APIUpdating;
 
 namespace HA
@@ -59,6 +59,7 @@ namespace HA
         private Camera mainCamera;
         private CharacterController controller;
         private Animator animator;
+        private RigBuilder rigBuilder;
 
 
 
@@ -132,6 +133,8 @@ namespace HA
             animator = GetComponentInChildren<Animator>();
             controller = GetComponent<CharacterController>();
             mainCamera = Camera.main;
+            rigBuilder = GetComponentInChildren<RigBuilder>();
+            
 
 
             // 현재 장착된 무기 -> 개선 필요(?)
@@ -240,10 +243,10 @@ namespace HA
             }
 
             // 캐릭터 조준 관련 인풋
-            Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+            Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
             Ray ray = Camera.main.ScreenPointToRay(screenCenter);
 
-            if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask))
+            if(Physics.Raycast(ray, out RaycastHit hit, 999f, aimMask))
             {
                 aimPos.position = Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
             }
@@ -317,11 +320,10 @@ namespace HA
             /*rigbuilder.enabled = animator.GetBool("Ready_Rifle");
              */
 
-            /* 사격 상태일 때만 에임 관련 리깅이 작동함
+            // 사격 상태일 때만 에임 관련 리깅이 작동함
             int rifle_fire = animator.GetInteger("Rifle_Fire");
-            rigbuilder.layers[0].active = Convert.ToBoolean(rifle_fire);
-            rigbuilder.layers[1].active = Convert.ToBoolean(rifle_fire);
-            */
+            rigBuilder.layers[0].active = Convert.ToBoolean(rifle_fire);
+            
 
             // 무장, 비무장상태 전환
             if (Input.GetKeyDown(KeyCode.U) && !isArmed)
@@ -355,7 +357,6 @@ namespace HA
             if (isArmed)
             {
                 animator.SetTrigger("Armed_Rifle");
-                Debug.Log("iaA");
 
                 // 재장전 로직
                 if (Input.GetKeyDown(KeyCode.R) && !currentWeapon.isReload &&
@@ -401,6 +402,8 @@ namespace HA
                 }
 
             }
+
+            
 
             // Idle 사격 상태에서 원래 자세로 탈출하는 로직
             // isWalk = isMove || isSprint;

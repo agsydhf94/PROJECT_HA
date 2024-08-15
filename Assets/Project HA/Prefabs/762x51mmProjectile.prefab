@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17528805185542f47a37954a53184089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 58.82
   lifeTime: 10
   rifle_power: 20
   metalImpactPrefab: {fileID: 2729475625142121071, guid: 8865bc66fe128e04db05a8e0546b7117, type: 3}
@@ -168,7 +168,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: b82c8a580387d7d4ab5327d94e15554f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -199,7 +199,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.38842964
+        value: 0.19544546
         inSlope: 0
         outSlope: 0
         tangentMode: 0

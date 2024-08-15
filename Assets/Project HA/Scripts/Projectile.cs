@@ -53,6 +53,7 @@ namespace HA
         private void OnTriggerEnter(Collider other)
         {
             IDamagable damagable = other.GetComponent<IDamagable>();
+            Debug.Log(other.name);
             if (damagable != null)
             {
                 damagable.Damage(rifle_power);

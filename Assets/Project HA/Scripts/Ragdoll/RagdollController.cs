@@ -10,6 +10,7 @@ namespace HA
         public Rigidbody[] rigidbodies;
         public Collider[] colliders;
         public Animator animator;
+        public NavMeshAgent navMeshAgent;
 
         [Header("Ragdoll Foece Active")]
         public HumanBodyBones targetBone;
@@ -21,8 +22,11 @@ namespace HA
             rigidbodies = GetComponentsInChildren<Rigidbody>();
             colliders = GetComponentsInChildren<Collider>();
             animator = GetComponent<Animator>();
+            navMeshAgent = GetComponent<NavMeshAgent>();
 
-            SetRagdollActive(false);
+            // SetRagdollActive(false);
+            RidigBodyActive(false);
+            ColliderActive(true);
         }
 
         [ContextMenu("Active Ragdoll With Power")]
@@ -47,17 +51,27 @@ namespace HA
         {
             // to do : Ragdoll을 활성화 시킬때는 Animator, NavMesh 등을 모두 꺼주는 것이 좋음
             animator.enabled = false;
-            gameObject.GetComponent<NavMeshAgent>().enabled = false;
+            navMeshAgent.enabled = false;
             SetRagdollActive(true);
         }
 
         public void SetRagdollActive(bool isActive)
         {
+            RidigBodyActive(isActive);
+
+            ColliderActive(isActive);
+        }
+
+        public void RidigBodyActive(bool isActive)
+        {
             foreach (var rb in rigidbodies)
             {
                 rb.isKinematic = !isActive;
             }
+        }
 
+        public void ColliderActive(bool isActive)
+        {
             foreach (var col in colliders)
             {
                 col.enabled = isActive;
