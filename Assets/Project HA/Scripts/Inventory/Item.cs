@@ -23,6 +23,8 @@ public class Item : MonoBehaviour, IInteractable
 
     private InventoryManager inventoryManager;
 
+    public ItemType itemType;
+
     public string Key => gameObject.name;
 
     public string Message => $"{itemName}";
@@ -38,7 +40,7 @@ public class Item : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        int leftOverItems = inventoryManager.AddItem(itemName, quantity, itemImage, itemDescription);
+        int leftOverItems = inventoryManager.AddItem(itemName, quantity, itemImage, itemDescription, itemType);
         if(leftOverItems <= 0)
         {
             InteractionUI.Instance.RemoveInteractionData(this);

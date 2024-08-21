@@ -415,7 +415,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3647898923218825000
 Transform:
   m_ObjectHideFlags: 0
@@ -469,20 +469,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745226c32a9d0804cb87240315987be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6284452345970181945, guid: 620297f0dc24ac84b8de41a6dff70c9b, type: 3}
-  muzzlePrefab: {fileID: 0}
-  bulletCartridgePrefab: {fileID: 1608517180416210535, guid: 097d0fc64da04b145b921b8c81ef0989, type: 3}
-  firePosition: {fileID: 0}
-  bulletCartRidgePosition: {fileID: 0}
-  animator: {fileID: 0}
-  gunController: {fileID: 0}
-  crosshair: {fileID: 0}
   gunName: SciFi Rifle
   range: 100
   fireRate: 0.1
-  accuracy: 0
   reloadTime: 0
   isReload: 0
+  recoilShakePattern: []
   damagePoint: 30
   reloadBulletCount: 10
   currentBulletCount: 10
@@ -490,7 +482,14 @@ MonoBehaviour:
   carryBulletCount: 23
   retroActionForce: 0
   retroActionFineSightForce: 0
+  bulletPrefab: {fileID: 6284452345970181945, guid: 620297f0dc24ac84b8de41a6dff70c9b, type: 3}
+  firePosition: {fileID: 0}
+  bulletCasingPrefab: {fileID: 0}
+  bulletCasingPosition: {fileID: 0}
+  muzzlePrefab: {fileID: 0}
   fire_Sound: {fileID: 8300000, guid: aae6983dd44853f4fbe612fe579ede6f, type: 3}
+  reload_Sound: {fileID: 0}
+  crosshair: {fileID: 0}
 --- !u!1 &9219264413008071041
 GameObject:
   m_ObjectHideFlags: 0

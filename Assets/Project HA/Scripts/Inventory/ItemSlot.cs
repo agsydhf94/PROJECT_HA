@@ -16,6 +16,7 @@ namespace HA
         public bool isFull;
         public string itemDescription;
         public Sprite emptySprite;
+        public ItemType itemType;
 
         [SerializeField]
         private int maxNumberOfItems;
@@ -41,16 +42,20 @@ namespace HA
 
         private void Start()
         {
-            inventoryManager = GameObject.Find("HA.InventoryUI").GetComponent<InventoryManager>();
+            // inventoryManager = GameObject.Find("HA.InventoryUI").GetComponent<InventoryManager>();
+            inventoryManager = GameObject.FindGameObjectWithTag("InventoryUI").GetComponent<InventoryManager>();
         }
 
-        public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
+        public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
         {
             // Check to see if the slot if already full
             if(isFull)
             {
                 return quantity;
             }
+
+            // update item type
+            this.itemType = itemType;
 
             // update Name
             this.itemName = itemName;
