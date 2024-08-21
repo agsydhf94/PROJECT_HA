@@ -19,12 +19,17 @@ namespace HA
         public ItemType itemType;
 
 
-        // Item Slot
-        [SerializeField]
-        private TMP_Text quantityText;
 
         [SerializeField]
         private Image itemImage;
+
+        // Equipped Slots
+        public EquippedSlot headSlot;
+        public EquippedSlot bodySlot;
+        public EquippedSlot armSlot;
+        public EquippedSlot legsSlot;
+        public EquippedSlot rifleSlot;
+        public EquippedSlot handgunSlot;
 
 
 
@@ -83,16 +88,7 @@ namespace HA
         {
             if (thisItemSelected)
             {
-                bool usable = inventoryManager.UseItem(itemName);
-                if (usable)
-                {
-                    this.quantity -= 1;
-                    quantityText.text = this.quantity.ToString();
-                    if (this.quantity <= 0)
-                    {
-                        EmptySlot();
-                    }
-                }
+                EquipGear();
 
             }
             else
@@ -103,9 +99,38 @@ namespace HA
             }
         }
 
+        private void EquipGear()
+        {
+            if(itemType == ItemType.head)
+            {
+                headSlot.EquipGear(itemSprite, itemName, itemDescription);
+            }
+            if (itemType == ItemType.body)
+            {
+                bodySlot.EquipGear(itemSprite, itemName, itemDescription);
+            }
+            if (itemType == ItemType.arm)
+            {
+                armSlot.EquipGear(itemSprite, itemName, itemDescription);
+            }
+            if (itemType == ItemType.legs)
+            {
+                legsSlot.EquipGear(itemSprite, itemName, itemDescription);
+            }
+            if (itemType == ItemType.Rifle)
+            {
+                rifleSlot.EquipGear(itemSprite, itemName, itemDescription);
+            }
+            if (itemType == ItemType.Handgun)
+            {
+                handgunSlot.EquipGear(itemSprite, itemName, itemDescription);
+            }
+
+            EmptySlot();
+        }
+
         private void EmptySlot()
         {
-            quantityText.enabled = false;
             itemImage.sprite = emptySprite;
         }
 
@@ -134,7 +159,6 @@ namespace HA
             // Item Subtraction
 
             this.quantity -= 1;
-            quantityText.text = this.quantity.ToString();
             if (this.quantity <= 0)
             {
                 EmptySlot();

@@ -210,8 +210,8 @@ namespace HA
 
         private void Start()
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
 
             // ¿Ã∑Ø∏È æ»µ 
             // GameObject.Find("GameDataModel").GetComponent<GameDataModel>.myDummyData.characterMoveSpeed
