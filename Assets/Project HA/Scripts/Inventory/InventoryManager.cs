@@ -7,30 +7,68 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
 
-    public GameObject InventoryMenu;
-    public bool menuActivated;
+    public CharacterBase characterBase;
+    public GameObject ItemMenu;
+    public GameObject EquipmentMenu;
     public ItemSlot[] itemSlot;
 
     public ItemSO[] itemSOs;
 
-    /*
+    
     private void Update()
     {
-        
-        if(Input.GetButtonDown("InventoryMenu") && menuActivated)
-        {    
-            InventoryMenu.SetActive(false);
-            menuActivated = false;
-        }
-
-        else if (Input.GetButtonDown("InventoryMenu") && !menuActivated)
+        if(Input.GetKeyDown(KeyCode.I))
         {
-            InventoryMenu.SetActive(true);
-            menuActivated = true;
+            ItemMenuUI();
         }
 
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            EquipmentUI();
+        }
     }
-    */
+
+    private void ItemMenuUI()
+    {
+        if (ItemMenu.activeSelf)
+        {
+            Time.timeScale = 1;
+            ItemMenu.SetActive(false);
+            EquipmentMenu.SetActive(false);
+        }
+
+        else
+        {
+            Time.timeScale = 0;
+            ItemMenu.SetActive(true);
+            EquipmentMenu.SetActive(false);
+        }
+    }
+
+    private void EquipmentUI()
+    {
+        if (EquipmentMenu.activeSelf)
+        {
+            Time.timeScale = 1;
+            ItemMenu.SetActive(false);
+            EquipmentMenu.SetActive(false);
+        }
+
+        else
+        {
+            Time.timeScale = 0;
+            ItemMenu.SetActive(false);
+            EquipmentMenu.SetActive(true);
+        }
+    }
+
+
+    private void Awake()
+    {
+        characterBase = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterBase>();
+    }
+
+
 
     public bool UseItem(string itemName)
     {

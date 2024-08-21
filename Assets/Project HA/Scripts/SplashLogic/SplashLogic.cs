@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SplashLogic : MonoBehaviour
 {
+    /*
     private void OnDrawGizmos()
     {
         for(int i = 0; i < detectedObjects.Count; i++)
@@ -19,6 +20,8 @@ public class SplashLogic : MonoBehaviour
     public float radius = 3f;
     public float splashAngle = 70f;
     public float distance = 10f;
+    */
+    
 
 
 
@@ -92,6 +95,7 @@ public class SplashLogic : MonoBehaviour
     }
     */
 
+    /*
     [ContextMenu("Detect")]
     public void ExplosionPhysics()
     {
@@ -107,6 +111,7 @@ public class SplashLogic : MonoBehaviour
             detectedObjects.Add(overlappedObjects[i].gameObject);
         }
     }
+    */
 
 
 

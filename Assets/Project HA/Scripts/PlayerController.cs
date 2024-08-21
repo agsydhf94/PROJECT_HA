@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.Scripting.APIUpdating;
@@ -51,6 +52,8 @@ namespace HA
 
         [Header("Interaction UI")]
         public InteractionSensor interactionSensor;
+
+        
 
 
         public AnimationEventListener animationEventListener;
@@ -134,6 +137,7 @@ namespace HA
             controller = GetComponent<CharacterController>();
             mainCamera = Camera.main;
             rigBuilder = GetComponentInChildren<RigBuilder>();
+            
             
 
 
@@ -408,8 +412,6 @@ namespace HA
             // Idle 사격 상태에서 원래 자세로 탈출하는 로직
             // isWalk = isMove || isSprint;
             // animator.SetBool("RifleFire_Idle_Exit", isMove || rifleHoldingTimer < 0);
-
-
 
 
 

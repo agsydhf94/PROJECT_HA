@@ -54,6 +54,7 @@ namespace HA
         public Transform bulletCasingPosition;
         public GameObject muzzlePrefab;
         public AudioClip fire_Sound;
+        public AudioClip reload_Sound;
         private AudioSource audioSource;
         public CrossHair crosshair;
 
