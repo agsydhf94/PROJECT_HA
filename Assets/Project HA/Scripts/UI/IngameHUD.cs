@@ -9,17 +9,21 @@ namespace HA
     public class IngameHUD : MonoBehaviour
     {
         
-        public GunController gunController; 
+        // public GunController gunController;
+        
+        public PlayerController playerController;
         public Weapon currentWeapon;
 
         public GameObject bulletHUD;
 
         public Text[] text_Bullet; // Åº °³¼ö ¹Ý¿µ
 
+        /*
         private void Awake()
         {
             gunController = GameObject.Find("WeaponHolder").GetComponent<GunController>();
         }
+        */
 
         private void Update()
         {
@@ -28,7 +32,7 @@ namespace HA
 
         private void CheckBullet()
         {
-            currentWeapon = gunController.GetWeapon();
+            currentWeapon = playerController.currentWeapon;
             text_Bullet[0].text = currentWeapon.carryBulletCount.ToString();
             text_Bullet[1].text = currentWeapon.currentBulletCount.ToString();
         }

@@ -13,6 +13,7 @@ namespace HA
         public string itemName;
         public int quantity;
         public Sprite itemSprite;
+        public GameObject itemObject;
         public bool isFull;
         public string itemDescription;
         public Sprite emptySprite;
@@ -132,6 +133,7 @@ namespace HA
         private void EmptySlot()
         {
             itemImage.sprite = emptySprite;
+            isFull = false;
         }
 
         public void OnRightClick()

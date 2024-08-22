@@ -102,6 +102,7 @@ namespace HA
         private bool isStrafe = false;
 
         [Header("Weapon Holder")]
+        public WeaponManager weaponManager;
         public GameObject weaponHolder;
         public Weapon currentWeapon;
         public GameObject scifiRifle_Dummy;
@@ -141,9 +142,9 @@ namespace HA
             
 
 
-            // 현재 장착된 무기 -> 개선 필요(?)
-            var weaponGameObject = TransformUtility.FindGameObjectWithTag(weaponHolder, "Weapon");
-            currentWeapon = weaponGameObject.gameObject.GetComponent<Weapon>();
+            //var weaponGameObject = TransformUtility.FindGameObjectWithTag(weaponHolder, "Weapon");
+            //currentWeapon = weaponGameObject.gameObject.GetComponent<Weapon>();
+            currentWeapon = weaponManager.weapon[0].GetComponent<Weapon>();
 
 
             // 아바타
@@ -324,6 +325,11 @@ namespace HA
             /*rigbuilder.enabled = animator.GetBool("Ready_Rifle");
              */
 
+            
+            
+
+            
+
             // 사격 상태일 때만 에임 관련 리깅이 작동함
             int rifle_fire = animator.GetInteger("Rifle_Fire");
             rigBuilder.layers[0].active = Convert.ToBoolean(rifle_fire);
@@ -360,6 +366,14 @@ namespace HA
 
             if (isArmed)
             {
+
+                // 현재 어느 무기가 사용되고 있는지 업데이트
+                foreach (var weapon_ in weaponManager.weapon)
+                {
+                    if (weapon_.activeSelf == true)
+                        currentWeapon = weapon_.GetComponent<Weapon>();
+                }
+
                 animator.SetTrigger("Armed_Rifle");
 
                 // 재장전 로직
