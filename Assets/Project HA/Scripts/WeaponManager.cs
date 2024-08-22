@@ -19,7 +19,8 @@ namespace HA
         // Update is called once per frame
         private void Update()
         {
-            
+            if(playerController.isArmed == true)
+            {
                 if (Input.GetAxis("Mouse ScrollWheel") > 0 && !isSwitching)
                 {
                     index++;
@@ -35,6 +36,8 @@ namespace HA
                         index = weapon.Length - 1;
                     StartCoroutine(SwitchDelay(index));
                 }
+            }
+            
             
         }
 
