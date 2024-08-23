@@ -13,21 +13,21 @@ public class EquippedSlot : MonoBehaviour
     [SerializeField]
     private TMP_Text slotName;
 
-    [SerializeField]
-    private Item playerDisplayObject;   // 아바타에 입쳐질 아이템 오브젝트
+    public Transform[] attachPoints;
 
     // Slot Data
     [SerializeField]
     private ItemType itemType = new ItemType();
 
-    private Sprite itemSprite;  // 인벤토리 메뉴 창에 뜰 아이템 이미지
-    private GameObject itemObject;  // 실제로 입혀질 아이템 오브젝트
-    private string itemName;
-    private string itemDescription;
+    
+    public Sprite itemSprite;  // 인벤토리 메뉴 창에 뜰 아이템 이미지
+    public GameObject[] itemObjects;  // 실제로 입혀질 아이템 오브젝트
+    public string itemName;
+    public string itemDescription;
 
     private bool slotInUse;
 
-    public void EquipGear(Sprite itemSprite, string itemName, string itemDescription)
+    public void EquipGear(Sprite itemSprite, GameObject itemPrefab, string itemName, string itemDescription)
     {
         // Image update
         this.itemSprite = itemSprite;
@@ -38,9 +38,29 @@ public class EquippedSlot : MonoBehaviour
         this.itemName = itemName;
         this.itemDescription = itemDescription;
 
-        // Display image update
-        
-        
+        // Item equip
+        // 기존 장착된 아이템 제거
+        if (itemObjects != null)
+        {
+            foreach (GameObject obj in itemObjects)
+            {
+                if (obj != null)
+                {
+                    Destroy(obj);
+                }
+            }
+        }
+
+        // 아이템 오브젝트 배열 초기화
+        itemObjects = new GameObject[attachPoints.Length];
+
+        // 각 부착 포인트에 아이템 부착
+        for (int i = 0; i < attachPoints.Length; i++)
+        {
+            itemObjects[i] = Instantiate(itemPrefab, attachPoints[i].position, attachPoints[i].rotation, attachPoints[i]);
+        }
+
+
 
         slotInUse = true;
     }

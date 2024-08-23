@@ -45,7 +45,7 @@ namespace HA
             inventoryManager = GameObject.FindGameObjectWithTag("InventoryUI").GetComponent<InventoryManager>();
         }
 
-        public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
+        public int AddItem(string itemName, GameObject itemObject, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
         {
             // Check to see if the slot if already full
             if (isFull)
@@ -62,6 +62,9 @@ namespace HA
             // update Image
             this.itemSprite = itemSprite;
             itemImage.sprite = itemSprite;
+
+            // update ItemObject
+            this.itemObject = itemObject;
 
             // update Description
             this.itemDescription = itemDescription;
@@ -104,27 +107,27 @@ namespace HA
         {
             if(itemType == ItemType.head)
             {
-                headSlot.EquipGear(itemSprite, itemName, itemDescription);
+                headSlot.EquipGear(itemSprite, itemObject, itemName, itemDescription);
             }
             if (itemType == ItemType.body)
             {
-                bodySlot.EquipGear(itemSprite, itemName, itemDescription);
+                bodySlot.EquipGear(itemSprite, itemObject, itemName, itemDescription);
             }
             if (itemType == ItemType.arm)
             {
-                armSlot.EquipGear(itemSprite, itemName, itemDescription);
+                armSlot.EquipGear(itemSprite, itemObject, itemName, itemDescription);
             }
             if (itemType == ItemType.legs)
             {
-                legsSlot.EquipGear(itemSprite, itemName, itemDescription);
+                legsSlot.EquipGear(itemSprite, itemObject,  itemName, itemDescription);
             }
             if (itemType == ItemType.Rifle)
             {
-                rifleSlot.EquipGear(itemSprite, itemName, itemDescription);
+                rifleSlot.EquipGear(itemSprite, itemObject, itemName, itemDescription);
             }
             if (itemType == ItemType.Handgun)
             {
-                handgunSlot.EquipGear(itemSprite, itemName, itemDescription);
+                handgunSlot.EquipGear(itemSprite, itemObject, itemName, itemDescription);
             }
 
             EmptySlot();

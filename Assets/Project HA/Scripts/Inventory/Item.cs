@@ -17,7 +17,12 @@ public class Item : MonoBehaviour, IInteractable
     public Sprite itemImage;
 
     [SerializeField]
+    public GameObject itemPrefab;
+
+    [SerializeField]
     public string itemDescription;
+
+    
 
     [TextArea]
 
