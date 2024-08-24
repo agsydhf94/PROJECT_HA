@@ -41,11 +41,14 @@ public class Item : MonoBehaviour, IInteractable
         // inventoryManager = GameObject.Find("HA.InventoryUI").GetComponent<InventoryManager>();
         // inventoryManager = InventoryManager.Instance;
         inventoryManager = GameObject.FindGameObjectWithTag("InventoryUI").GetComponent<InventoryManager>();
+        
     }
+
+    
 
     public void Interact()
     {
-        int leftOverItems = inventoryManager.AddItem(itemName, quantity, itemImage, itemDescription, itemType);
+        int leftOverItems = inventoryManager.AddItem(itemName, itemPrefab, quantity, itemImage, itemDescription, itemType);
         if(leftOverItems <= 0)
         {
             InteractionUI.Instance.RemoveInteractionData(this);

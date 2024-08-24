@@ -10,6 +10,7 @@ TagManager:
   - UI
   - EnemyWaypoints
   - InventoryUI
+  - Grenade_Dummy
   layers:
   - Default
   - TransparentFX

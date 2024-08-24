@@ -13,6 +13,7 @@ namespace HA
         public string itemName;
         public int quantity;
         public Sprite itemSprite;
+        public GameObject itemObject;
         public bool isFull;
         public string itemDescription;
         public Sprite emptySprite;
@@ -46,7 +47,7 @@ namespace HA
             inventoryManager = GameObject.FindGameObjectWithTag("InventoryUI").GetComponent<InventoryManager>();
         }
 
-        public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
+        public int AddItem(string itemName, GameObject itemObject, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
         {
             // Check to see if the slot if already full
             if(isFull)
@@ -63,6 +64,9 @@ namespace HA
             // update Image
             this.itemSprite = itemSprite;
             itemImage.sprite = itemSprite;
+
+            // update itemObject
+            this.itemObject = itemObject;
 
             // update Description
             this.itemDescription = itemDescription;
@@ -154,11 +158,34 @@ namespace HA
             newItem.itemName = itemName;
             newItem.itemImage = itemSprite;
             newItem.itemDescription = itemDescription;
+            newItem.itemPrefab = itemObject;
 
+            /*
             SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
             sr.sprite = itemSprite;
             sr.sortingOrder = 5;
             sr.sortingLayerName = "Ground";
+            */
+
+            // itemObject를 인스턴스화하여 사용할 오브젝트를 생성
+            GameObject instantiatedItemObject = Instantiate(itemObject);
+
+            // MeshRenderer를 아이템에서 찾기 (자식 오브젝트까지 포함하여 탐색)
+            MeshRenderer itemMeshRenderer = instantiatedItemObject.GetComponentInChildren<MeshRenderer>();
+
+            if (itemMeshRenderer != null)
+            {
+                // itemToDrop 오브젝트에 MeshRenderer 추가
+                MeshRenderer mr = itemToDrop.AddComponent<MeshRenderer>();
+                mr.material = itemMeshRenderer.material; // itemObject에서 가져온 material로 설정
+            }
+            else
+            {
+                Debug.LogError("MeshRenderer를 itemObject에서 찾을 수 없습니다.");
+            }
+
+
+
 
             itemToDrop.AddComponent<BoxCollider>();
 

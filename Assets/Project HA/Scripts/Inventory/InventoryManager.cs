@@ -86,7 +86,7 @@ public class InventoryManager : MonoBehaviour
     }
 
 
-    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
+    public int AddItem(string itemName, GameObject itemObject, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
     {
         if(itemType == ItemType.consumable)
         {
@@ -94,10 +94,10 @@ public class InventoryManager : MonoBehaviour
             {
                 if (itemSlot[i].isFull == false && itemSlot[i].itemName == itemName || itemSlot[i].quantity == 0)
                 {
-                    int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType);
+                    int leftOverItems = itemSlot[i].AddItem(itemName, itemObject, quantity, itemSprite, itemDescription, itemType);
                     if (leftOverItems > 0)
                     {
-                        leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription, itemType);
+                        leftOverItems = AddItem(itemName, itemObject, leftOverItems, itemSprite, itemDescription, itemType);
 
                     }
                     return leftOverItems;
@@ -111,10 +111,10 @@ public class InventoryManager : MonoBehaviour
             {
                 if (equipmentSlot[i].isFull == false && equipmentSlot[i].itemName == itemName || equipmentSlot[i].quantity == 0)
                 {
-                    int leftOverItems = equipmentSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType);
+                    int leftOverItems = equipmentSlot[i].AddItem(itemName, itemObject, quantity, itemSprite, itemDescription, itemType);
                     if (leftOverItems > 0)
                     {
-                        leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription, itemType);
+                        leftOverItems = AddItem(itemName, itemObject, leftOverItems, itemSprite, itemDescription, itemType);
 
                     }
                     return leftOverItems;

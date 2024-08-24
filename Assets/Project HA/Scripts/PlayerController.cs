@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.Scripting.APIUpdating;
+using Random = UnityEngine.Random;
 
 namespace HA
 {
@@ -105,7 +107,10 @@ namespace HA
         public WeaponManager weaponManager;
         public GameObject weaponHolder;
         public Weapon currentWeapon;
+        public WeaponGrenade currentGrenade;
         public GameObject scifiRifle_Dummy;
+        public GameObject grenadePrefab;
+        public GameObject grenade_Dummy;
         // public RigBuilder rigbuilder;
 
 
@@ -130,6 +135,7 @@ namespace HA
             animationEventListener = GetComponentInChildren<AnimationEventListener>();
             animationEventListener.OnTakeAnimationEvent += RifleDrawTiming;
             animationEventListener.OnTakeAnimationEvent += RifleHolsterTiming;
+            animationEventListener.OnTakeAnimationEvent += GrenadeThrow;
 
 
             // ÄÄÆ÷³ÍÆ® 
@@ -185,7 +191,11 @@ namespace HA
         {
             if(eventName.Equals("Grenade_Throw"))
             {
-
+                grenade_Dummy.SetActive(false);
+                GameObject grenade = Instantiate(grenadePrefab, grenade_Dummy.transform.position, grenade_Dummy.transform.rotation);
+                var rigidbody = grenade.gameObject.GetComponent<Rigidbody>();
+                rigidbody.AddForce(transform.parent.forward * 500f);
+                //grenade.GetComponent<WeaponGrenade>().Settings(30f, transform.parent.forward);
             }
         }
 
@@ -359,6 +369,7 @@ namespace HA
             if(Input.GetKeyDown(KeyCode.Mouse2))
             {
                 animator.SetTrigger("Grenade");
+                grenade_Dummy.gameObject.SetActive(true);
             }
 
 
