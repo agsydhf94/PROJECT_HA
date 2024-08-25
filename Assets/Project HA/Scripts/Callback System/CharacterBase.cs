@@ -7,6 +7,8 @@ namespace HA
 {
     public class CharacterBase : MonoBehaviour, IDamagable
     {
+        public float initialHealth = 100f;
+
         public float currentHP;
         public float maxHP;
 
@@ -41,10 +43,10 @@ namespace HA
         protected virtual void OnEnable()
         {
             Dead = false;
-            currentHP = maxHP;
+            currentHP = initialHealth;
         }
 
-        public virtual void Damage(float damage)
+        public virtual void Damage(float damage, Vector3 hitPoint, Vector3 hitNormal)
         {
             currentHP -= damage;
 
