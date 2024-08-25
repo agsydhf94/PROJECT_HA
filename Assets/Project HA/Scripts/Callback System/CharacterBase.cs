@@ -5,13 +5,16 @@ using UnityEngine;
 
 namespace HA
 {
-    public class CharacterBase : MonoBehaviour
+    public class CharacterBase : MonoBehaviour, IDamagable
     {
         public float currentHP;
         public float maxHP;
 
         public float currentMP;
         public float maxMP;
+
+        public bool Dead { get; protected set; }
+        public event Action OnDeath;
 
         public delegate void OnDamage(float currentHP, float maxHP);
         public OnDamage onDamageCallback;
@@ -34,7 +37,14 @@ namespace HA
             characterRenderers = GetComponentsInChildren<Renderer>();
         }
 
-        public void Damage(float damage)
+        // 생명체의 상태를 리셋
+        protected virtual void OnEnable()
+        {
+            Dead = false;
+            currentHP = maxHP;
+        }
+
+        public virtual void Damage(float damage)
         {
             currentHP -= damage;
 
@@ -46,10 +56,11 @@ namespace HA
 
             OnDamaged?.Invoke(currentHP, maxHP);
 
-            if (currentHP <= 0)
+            if (currentHP <= 0 && !Dead)
             {
-                onCharacterDead();
-                Destroy(gameObject);
+                //onCharacterDead();
+                //Destroy(gameObject);
+                Die();
             }
         }
 
@@ -59,12 +70,27 @@ namespace HA
             Damage(20);
         }
 
-        public void IncreaseHP(float amount)
+        public virtual void IncreaseHP(float amount)
         {
+            if(Dead)
+            {
+                return;
+            }
+
             currentHP += amount;
             currentHP = Mathf.Clamp(currentHP, 0, maxHP);
 
             OnChangedHP?.Invoke(currentHP, maxHP);
+        }
+
+        public virtual void Die()
+        {
+            if(OnDeath != null)
+            {
+                OnDeath();
+            }
+
+            Dead = true;
         }
     }
 
