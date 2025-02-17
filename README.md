@@ -1,3 +1,5 @@
+영상 링크 : https://drive.google.com/drive/folders/1dBuJjGFpZouPWpuOlqhBzZwvrt40KOL4?usp=drive_link
+
 # 기술 개요
 
 ## 인벤토리
